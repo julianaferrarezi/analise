@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/academico">
+  <ResourceLink global="jdbc/coredb-postgresql" name="jdbc/coredb-postgresql" type="javax.sql.Datasource"/>
+  <ResourceLink global="jdbc/coredb-master-postgresql" name="jdbc/coredb-master-postgresql" type="javax.sql.Datasource"/>
+  <ResourceLink global="jdbc/coredb-slave-postgresql" name="jdbc/coredb-slave-postgresql" type="javax.sql.Datasource"/>
+</Context>

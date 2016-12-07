@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Academico" default="compilar" basedir=".">
+	<property name="fontes" value="." />
+	<property name="fontes-api" value="../src-api" />
+	<property name="classes" value="../web/WEB-INF/classes" />
+	<property name="lib" value="../web/WEB-INF/lib" />
+	<property name="servlet-api.jar" value="/usr/share/tomcat/lib/servlet-api.jar" />
+
+	<path id="classpath.compilar">
+		<fileset dir="${lib}">
+			<include name="**/*.jar" />
+			<include name="**/*.zip" />
+		</fileset>
+		<pathelement location="${servlet-api.jar}" />
+	</path>
+
+	<target name="compilar">
+                <tstamp>
+                    <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+                </tstamp>
+                
+                <echo file="build.properties">date=${TODAY}</echo>
+                
+		<mkdir dir="${classes}" />
+
+		<javac srcdir="${fontes}" destdir="${classes}" debug="On" encoding="UTF-8" failonerror="false">
+			<classpath refid="classpath.compilar" />
+		</javac>
+		
+		<javac srcdir="${fontes-api}" destdir="${classes}" debug="On" encoding="UTF-8" failonerror="false">
+			<classpath refid="classpath.compilar" />
+		</javac>
+
+		<copy todir="${classes}">
+			<fileset dir="${fontes}">
+				<include name="**/*xml" />
+				<include name="**/*properties" />
+				<include name="**/*html" />
+			</fileset>
+		</copy>
+	</target>
+</project>

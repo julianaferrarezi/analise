@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <api>
+	    <hosts>
+	    	<!-- Servidores -->
+	        <allow>localhost</allow>
+	        <allow>200.145.6.83</allow><!-- core3.reitoria.unesp.br -->
+	        <allow>200.145.6.88</allow><!-- core6.reitoria.unesp.br -->
+	        <allow>200.145.241.50</allow><!-- sistemas.feis.unesp.br -->
+   	        <allow>200.145.167.13</allow><!-- FC -->
+			<!-- Cluster Bauru -->
+	        <allow>200.145.167.35</allow><!-- coresrv1.bauru.unesp.br -->
+	        <allow>200.145.157.8</allow><!-- coresrv2.bauru.unesp.br -->
+	        <allow>200.145.167.37</allow><!-- coresrv2.bauru.unesp.br NOVO-->
+	        <allow>200.145.167.36</allow><!-- coresrv3.bauru.unesp.br -->        
+	        <!-- Cluster SP -->
+	        <allow>200.145.6.195</allow><!-- coresrv1sp.reitoria.unesp.br -->
+	        <allow>200.145.6.196</allow><!-- coresrv2sp.reitoria.unesp.br -->
+	        <allow>200.145.6.197</allow><!-- coresrv3sp.reitoria.unesp.br -->
+	        <allow>200.145.6.200</allow><!-- coresrv4sp.reitoria.unesp.br -->
+	        <allow>200.145.6.201</allow><!-- coresrv5sp.reitoria.unesp.br -->
+	        <allow>200.145.6.208</allow><!-- coresrv6sp.reitoria.unesp.br -->
+	        <allow>200.145.6.84</allow>
+	        
+	        <!-- Desenvolvedores de Bauru -->
+	        <allow>200.145.150.161</allow><!-- Alessandro amoraes@feb.unesp.br -->
+	        <allow>200.145.150.162</allow><!-- Alessandro amoraes@feb.unesp.br -->
+	        <allow>200.145.152.196</allow><!-- Demitrius demitrius@faac.unesp.br -->
+	        <allow>200.145.150.164</allow><!-- Kaio kaio@feb.unesp.br -->
+	        <allow>200.145.150.163</allow><!-- Rafael rafael.abe@fc.unesp.br -->
+	        <allow>200.145.150.165</allow><!-- Chieppe rodrigo.chieppe@fc.unesp.br -->
+	        
+	        <!-- Desenvolvedores de outra unidade -->
+	        <allow>200.145.31.49</allow><!-- Samuel samuel@rc.unesp.br -->
+	        
+	        <!-- Sistemas de Outras Unidades -->
+	         <allow>200.145.31.241</allow><!-- Sistema SAD - Sistema de Avaliação de Disciplinas do Campus de Rio Claro. Responsável: Samuel (samuel@rc.unesp.br) -->
+	         
+	         <allow>200.145.159.85</allow><!-- Sistema de Avaliação de Disciplinas DCo/FC Bauru -->
+	         
+	         <allow>200.145.78.97</allow><!-- FCLAR - Avaliação de Disciplinas. Responsável: Rafael (rafaelhfaria@fclar.unesp.br) -->
+	         <allow>200.145.78.6</allow><!--  FCLAR - Lista de E-mails. Responsável: Rafael (rafaelhfaria@fclar.unesp.br) -->
+	         
+	         <allow>200.145.71.221</allow><!-- Avaliação FCFar. Responsável: Clériston Martinello cleriston@fcfar.unesp.br -->
+	         
+	         <allow>200.145.241.20</allow><!-- Controle de Inscrições CIC - FEIS. Responsável: Valentim Aparecido Paris   (tim@adm.feis.unesp.br) -->
+	         
+	         <allow>200.145.6.194</allow><!--  PROPe. Responsável: Maurício Wurthmann Saad (mwsaad@gmail.com) -->
+	         
+	         <allow>200.145.181.22</allow><!-- Sistema de Avaliação FCT. Responsável: Maria Lúcia Decco Faucz (lucia@fct.unesp.br) -->
+	         
+	         <allow>200.145.11.7</allow><!--  FEG. Responsável: Jean Felipe Arruda Guedes (jeanfag@feg.unesp.br) -->
+	         <allow>200.145.11.235</allow><!-- " -->
+	         
+	         <allow>186.217.53.13</allow> <!--  FMB - Responsável: Vanderlei Galhardi (vanderlei@fmb.unesp.br) -->
+             <allow>186.217.53.34</allow> <!--  FMB - Responsável: Vanderlei Galhardi (vanderlei@fmb.unesp.br) -->
+             <allow>2801:88:f44b:10::13</allow> <!--  FMB - Responsável: Vanderlei Galhardi (vanderlei@fmb.unesp.br) -->
+             <allow>2801:88:f44b:10::34</allow> <!--  FMB - Responsável: Vanderlei Galhardi (vanderlei@fmb.unesp.br) -->
+             
+             <allow>200.145.31.70</allow> <!-- RC - Ari Araldo Xavier de Camargo - aaxcamargo@gmail.com -->             
+             
+             <allow>200.145.6.108</allow> <!-- Evoto na máquina toledo.reitoria.unesp.br -->
+             <allow>200.145.6.109</allow> <!-- Evoto na máquina budapest.reitoria.unesp.br-->
+             <allow>200.145.6.210</allow> <!--  -->
+             
+             <allow>200.145.140.5</allow><!-- FCA Intranet. Responsável:  Luiz Paulo Sartori Zanetti (luizpaulo@fca.unesp.br) -->
+             
+             <allow>200.145.167.18</allow> <!-- listas.bauru.unesp.br - Redmine #9999 -->  
+             
+             <!-- Sistema de Egressos - Reitoria. Responsável: Wellington Vieira (wsvieira@reitoria.unesp.br) -->
+             <allow>200.145.2.52</allow>
+             <allow>200.145.6.32</allow>
+             <allow>200.145.6.219</allow>
+             <allow>200.145.6.16</allow>
+             <!-- END Sistema de Egresso -->
+             
+             <allow>200.145.25.3</allow> <!-- Informações dinâmicas no site do câmpus - André - ICT-SJC (andre@ict.unesp.br) -->
+             <allow>200.145.167.5</allow> <!-- web.bauru.unesp.br - Aplicações Locais FC - Responsável André Penteado /FC -->
+             
+             <allow>200.145.11.237</allow> <!-- Jean - Ferramenta do suporte -->
+             
+             <allow>200.145.1.80</allow> <!-- Sistema de Gerenciamento de Cursos - Produção. Responsável Alisson/NEAD (alisondocarmo@gmail.com) -->
+             
+	         <allow>200.145.208.31</allow> <!-- Guilherme Priólli Daniel - PROPE (Lattes) gbd.lattes@gmail.com -->
+	         <allow>2801:88:1b11:9:24d1:945c:7780:acd</allow> <!-- IPv6 Guilherme Priólli Daniel - PROPE (Lattes) gbd.lattes@gmail.com -->             
+
+             <!-- Bauru -->
+             <allow>200.145.167.13</allow><!-- Servidor do sistema de reserva de refeições do R.U. - Câmpus de Bauru - alpa@fc.unesp.br -->
+             <allow>200.145.167.5</allow><!-- Servidor web.bauru -->
+             <allow>200.145.167.18</allow><!-- atualização listas institucionais -->
+             <allow>200.145.167.44</allow><!-- Servidor de homologação dos sistemas locais -->
+             <allow>200.145.157.33</allow><!-- Máquina de desenvolvimento André Penteado - alpa@fc.unesp.br  -->
+             <allow>2801:88:ba::13</allow><!-- Servidor do sistema de reserva de refeições do R.U. - Câmpus de Bauru - alpa@fc.unesp.br -->
+             <allow>2801:88:ba::5</allow><!-- Servidor web.bauru -->
+             <allow>2801:88:ba::18</allow><!-- atualização listas institucionais -->
+             <allow>2801:88:ba::44</allow><!-- atualização listas institucionais -->
+	    </hosts>
+    </api>    
+</properties>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <api>
+	    <hosts>
+	        <allow>localhost</allow>
+	        <!-- Desenvolvedores de Bauru -->
+	        <allow>200.145.150.161</allow><!-- Alessandro amoraes@feb.unesp.br -->
+	        <allow>200.145.150.162</allow><!-- Alessandro amoraes@feb.unesp.br -->
+	        <allow>200.145.152.196</allow><!-- Demitrius demitrius@faac.unesp.br -->
+	        <allow>2801:88:faac::152:196</allow><!-- Demitrius demitrius@faac.unesp.br -->
+	        
+	        <allow>200.145.150.164</allow><!-- Kaio kaio@feb.unesp.br -->
+	        <allow>200.145.150.163</allow><!-- Rafael rafael.abe@fc.unesp.br -->
+	        <allow>200.145.159.165</allow><!-- Chieppe rodrigo.chieppe@fc.unesp.br -->
+	        <allow>200.145.150.196</allow><!-- Alex alex@feb.unesp.br -->
+   	        <allow>200.145.157.33</allow><!-- André andre@fc.unesp.br -->
+   	        <allow>200.145.156.46</allow><!-- Luiza (Estagiária FC) -->
+	        <!--  Desenvolvedores de outras unidades -->
+	        <allow>200.145.101.113</allow><!-- Andressa andresa@fct.unesp.br -->
+	        
+	        <allow>200.145.31.49</allow><!-- Samuel samuel@rc.unesp.br -->
+	        <allow>200.145.31.27</allow><!-- Rodrigo rodrigo@rc.unesp.br -->
+	        
+	        <allow>200.145.181.22</allow><!-- Lucia lucia@fct.unesp.br -->
+	        <allow>200.145.181.142</allow><!-- Lucia (Estagiário) lucia@fct.unesp.br -->
+	        <allow>200.145.181.139</allow><!-- Lucia (Estagiário) lucia@fct.unesp.br -->
+	        
+	        <allow>200.145.235.149</allow><!-- Rodrigo Tessari Rondão Gutierres (rodrigo@iq.unesp.br) -->
+	        <allow>200.145.235.148</allow><!-- Rodrigo Tessari Rondão Gutierres (rodrigo@iq.unesp.br) -->
+	        <allow>200.145.235.193</allow><!-- Manoel Guerreiro (guerreiro@iq.unesp.br) -->
+	        
+	        <allow>200.145.159.207</allow><!-- Isabele - DCo (isabele@fc.unesp.br) -->
+	        
+	        <allow>200.145.71.221</allow><!--  Clériston Martinello - Avaliação FCFar (cleriston@fcfar.unesp.br) -->
+	        
+	        <allow>200.145.92.39</allow><!--Bibliotecas - Oberdan Luiz May (oberdan@reitoria.unesp.br) -->
+	        
+	        <allow>200.145.92.196</allow><!--  Marcos Antunes - AREX (mantunes@reitoria.unesp.br) -->
+	        
+	        <allow>200.145.11.7</allow><!-- Jean Felipe Arruda Guedes - Cadastro da Biblioteca (jeanfag@feg.unesp.br) -->
+			<allow>200.145.14.235</allow><!-- Jean Felipe Arruda Guedes - Cadastro da Biblioteca (jeanfag@feg.unesp.br) -->
+			
+			<allow>200.145.171.2</allow> <!-- Guilherme Scombatti (Servidor) - Marília - Aplicação IPhone -->
+			<allow>200.145.170.206</allow> <!-- Guilherme Scombatti (Desenvolvimento) - Marília - Aplicação IPhone -->
+			
+			<allow>200.145.241.70</allow> <!-- Valentim Aparecido Paris - tim@adm.feis.unesp.br -->
+			<allow>200.145.241.118</allow> <!-- Valentim Aparecido Paris - tim@adm.feis.unesp.br -->
+			
+			<allow>200.145.235.247</allow><!-- Nelson A. de Oliveira - naoliv@iq.unesp.br -->
+			
+			<allow>200.145.170.253</allow><!-- Sílvio Cândido - scandido@marilia.unesp.br -->
+			
+			<allow>200.145.6.194</allow><!--  PROPe. Responsável: Maurício Wurthmann Saad (mwsaad@gmail.com) -->
+			
+			<allow>200.145.11.7</allow><!--  FEG. Responsável: Maurício Wurthmann Saad (mwsaad@gmail.com) -->
+			
+			<allow>200.145.25.3</allow><!-- FOSJC. Responsável: Luciano Muller (muller@fosjc.unesp.br) -->
+			
+			<allow>200.145.2.52</allow><!-- Reitoria - Sistema de Egressos. Responsável: Wellington Vieira (wsvieira@reitoria.unesp.br)  -->
+			<allow>200.145.6.235</allow><!-- Reitoria - Sistema de Egressos. Responsável: Wellington Vieira (wsvieira@reitoria.unesp.br)  -->
+			
+			<allow>200.145.101.113</allow><!-- Proex. Responsável: Andresa Santos (andresa@fct.unesp.br) -->
+			
+			<allow>200.145.140.5</allow><!-- FCA Intranet. Responsável:  Luiz Paulo Sartori Zanetti (luizpaulo@fca.unesp.br) -->
+			<allow>200.145.140.208</allow><!-- FCA Intranet. Responsável:  Luiz Paulo Sartori Zanetti (luizpaulo@fca.unesp.br) -->
+			
+			<allow>200.145.101.22</allow><!-- Sanches - Jaboticabal - Diploma -->
+	        <allow>200.145.101.23</allow><!-- Gilberto - Jaboticabal - Diploma -->
+	        
+	        <allow>200.145.181.143</allow><!-- Bruno Tacca - FCT/Prudente - Estágiario Proex -->
+	        
+	        <allow>200.145.181.24</allow><!-- Raphael Garcia - FCT/Prudente -->
+	        
+	        <allow>200.145.170.230</allow><!-- Lúcio Felipe - SGCD. Marília (luciofelippe@marilia.unesp.br) -->
+	        
+	        <allow>200.145.161.57</allow><!-- Paulo Ramão - Controle de Aulas Práticas de Labotarório e Restaurante Universitário / Assis (paulo@assis.unesp.br) -->
+	        
+	        <allow>200.145.6.210</allow> <!-- André?!?!?!? FC -->
+
+	        <allow>200.145.31.49</allow><!-- Samuel - Rio Claro - SISLIC -->
+	        <allow>200.145.31.27</allow><!-- Rodrigo - Rio Claro - SISLIC -->
+	        <allow>200.145.31.55</allow><!-- William - Rio Claro - SISLIC -->
+
+            <allow>200.145.31.28</allow> <!-- RC - Ari Araldo Xavier de Camargo - aaxcamargo@gmail.com -->
+
+	        <allow>186.217.53.10</allow> <!--  FMB - Responsável: Vanderlei Galhardi (vanderlei@fmb.unesp.br) -->
+	        <allow>2801:88:f44b:10::10</allow> 
+	        
+	        <allow>200.145.183.230</allow> <!-- Sistema de Gerenciamento de Cursos - Ambiente de testes -->
+	        <allow>200.145.1.80</allow> <!-- Sistema de Gerenciamento de Cursos - Produção -->
+ 	    	<allow>200.145.9.54</allow> <!-- Nome/contato responsável técnico: Ana Paula Souza do Nascimento - ananascimento@nead.unesp.br -->
+ 	    	<allow>2801:88:ead::1:54</allow>
+ 	    	<allow>200.145.9.66</allow>
+	        
+	        <allow>200.145.2.134</allow> <!-- Reitoria - Vanessa Beloti - Sistema de Atividade Docente (vanessa@reitoria.unesp.br) -->
+	        <allow>2801:88:1000:2::f681</allow> <!-- Reitoria - Vanessa Beloti - Sistema de Atividade Docente (vanessa@reitoria.unesp.br) -->
+	        <allow>200.145.2.124</allow> <!-- Reitoria - Humberto - humberto@reitoria.unesp.br -->
+	        <allow>200.145.2.131</allow> <!-- Reitoria - Sandro - sandro@reitoria.unesp.br  -->
+	        <allow>200.145.6.236</allow> <!-- Reitoria - Servidor de homolagação (vanessa@reitoria.unesp.br) -->
+	        
+	        <allow>200.145.150.171</allow> <!-- Juliana Ferrarezi - FC (juliana.ferrarezi@fc.unesp.br) -->
+	        <allow>200.145.150.168</allow> <!-- Marcelo De Paula Lima - FAAC (marcelolima@faac.unesp.br) -->
+	        
+	        <allow>200.145.93.225</allow> <!-- Mario Lucio de Assis - PROPE (mariosp@reitoria.unesp.br) -->
+	        <allow>2801:88:1000:93::f933</allow> <!-- IPv6 Mario Lucio de Assis - PROPE -->
+	        <allow>200.145.208.31</allow> <!-- Guilherme Priólli Daniel - PROPE (Lattes) gbd.lattes@gmail.com -->
+	        <allow>2801:88:1b11:9:24d1:945c:7780:acd</allow> <!-- IPv6 Guilherme Priólli Daniel - PROPE (Lattes) gbd.lattes@gmail.com -->
+	        
+         	<allow>186.217.46.133</allow> <!-- Ciro IBB - Sistema de Avaliação -->
+           	<allow>186.217.46.137</allow>
+           	
+           	<allow>200.145.159.20</allow> <!-- Desenvolvimento eVoto - Responsável Demitrius -->
+           	<allow>2801:88:fc::20</allow>
+           	<allow>200.145.152.42</allow> <!-- Servidor de Testes do eVoto - Responsável Demitrius -->
+           	<allow>2801:88:faac::152:42</allow>
+
+            <!-- Bauru -->
+            <allow>200.145.167.13</allow><!-- Servidor do sistema de reserva de refeições do R.U. - Câmpus de Bauru - alpa@fc.unesp.br -->
+            <allow>200.145.167.5</allow><!-- Servidor web.bauru -->
+            <allow>200.145.167.18</allow><!-- atualização listas institucionais -->
+            <allow>200.145.167.44</allow><!-- Servidor de homologação dos sistemas locais -->
+            <allow>200.145.157.33</allow><!-- Máquina de desenvolvimento André Penteado - alpa@fc.unesp.br  -->
+            <allow>2801:88:ba::13</allow><!-- Servidor do sistema de reserva de refeições do R.U. - Câmpus de Bauru - alpa@fc.unesp.br -->
+            <allow>2801:88:ba::5</allow><!-- Servidor web.bauru -->
+            <allow>2801:88:ba::18</allow><!-- atualização listas institucionais -->
+            <allow>2801:88:ba::44</allow><!-- atualização listas institucionais -->
+	    </hosts>
+    </api>    
+</properties>

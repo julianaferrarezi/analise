@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+	<!-- NOME DO SISTEMA + E-MAIL DO RESPONSÁVEL + DEVEL -->
+
+    <!-- Nome/contato responsável técnico: Juliana Ferrarezi (juliana.ferrarezi@fc.unesp.br) -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema da clínica de psicologia da FC</description>
+    	<application-id>CPA</application-id>
+	    <hosts>
+ 	    	<allow>200.145.150.171</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>
+    
+    <!-- Nome/contato responsável técnico: Juliana Ferrarezi (juliana.ferrarezi@fc.unesp.br) -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema para gerenciamento de serviços de redes utilizado na FC</description>
+    	<application-id>NetManager</application-id>
+	    <hosts>
+ 	    	<allow>200.145.150.171</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>
+
+	<!-- Nome/contato responsável técnico: Juliana Ferrarezi (juliana.ferrarezi@fc.unesp.br) -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema do Restaurante Universitário do Campus de Bauru</description>
+    	<application-id>RU</application-id>
+	    <hosts>
+ 	    	<allow>200.145.150.171</allow> 
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>    
+    
+    <!-- Nome/contato responsável técnico: Alex Florentino, Ramal 6494, alex@feb.unesp.br -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Relatorios solicitados pela direção da FEB</description>
+    	<application-id>PainelGestor</application-id>
+	    <hosts>
+ 	    	<allow>200.145.150.196</allow> 
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/departamentosSecoes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/disciplinas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/docentes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/turmas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>
+    
+    <!-- Nome/contato responsável técnico: Wellington Camargo (wcamargo@feb.unesp.br) e Alessandro Moraes (amoraes@feb.unesp.br) -->
+    <token>
+    	<key>f7289fe2a86d07858c0502baf9cd1abc</key>
+    	<description>Sistemas locais da FEB</description>
+    	<application-id>sislocalFEB</application-id>
+	    <hosts>
+ 	    	<allow>200.145.150.200</allow>
+ 	    	<allow>200.145.150.161</allow>
+ 	    	<allow>200.145.167.46</allow>
+ 	    	<allow>200.145.155.18</allow>
+ 	    	<allow>200.145.150.110</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>	    
+	    <allow-service>
+	    	<uri>/api/v2/departamentosSecoes</uri>
+	    	<method>GET</method>
+	    </allow-service>	    
+	    <allow-service>
+	    	<uri>/api/v2/docentes</uri>
+	    	<method>GET</method>
+	    </allow-service>	    
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/estruturasCurriculares</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/turmas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/disciplinas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/egressos</uri>
+	    	<method>GET</method>
+	    </allow-service>	    	    	    	    
+    </token>    
+
+	<!-- Nome/contato responsável técnico: Clériston (cleriston@fcfar.unesp.br) / José (jose@fcfar.unesp.br) -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema de avaliação de disciplinas FCFAR</description>
+    	<application-id>Avafar</application-id>
+	    <hosts>
+ 	    	<allow>200.145.233.70</allow>
+ 	    	<allow>200.145.233.78</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/turmas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/disciplinas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+
+    </token>    
+    
+    <!-- Nome/contato responsável técnico: Vanderlei Galhardi, vanderlei@fmb.unesp.br -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema que integra os dados dos diferentes segmentos da comunidade universitária para diversos fins</description>
+    	<application-id>Portal de Sistemas da FMB</application-id>
+	    <hosts>
+ 	    	<allow>186.217.53.10</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>    
+
+    <!-- Nome/contato responsável técnico: Míriam Yumi Hamada Memari - miriam@faac.unesp.br -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema de Votação Eletrônica</description>
+    	<application-id>e-Voto</application-id>
+	    <hosts>
+ 	    	<allow>200.145.152.196</allow>
+ 	    	<allow>2801:88:faac:16::152:196</allow>
+           	<allow>200.145.159.20</allow> <!-- Desenvolvimento eVoto - Responsável Demitrius -->
+           	<allow>2801:88:fc::20</allow>
+           	<allow>200.145.152.42</allow> <!-- Servidor de Testes do eVoto - Responsável Demitrius -->
+           	<allow>2801:88:faac::152:42</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>    
+
+    <!-- Nome/contato responsável técnico: Demitrius Belai - demitrius@faac.unesp.br -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema de Congregação</description>
+    	<application-id>Congregação</application-id>
+	    <hosts>
+ 	    	<allow>200.145.152.196</allow>
+ 	    	<allow>2801:88:faac:16::152:196</allow>
+ 	    	<allow>200.145.150.171</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>
+    
+    <!-- Nome/contato responsável técnico: Luiz Paulo Sartori Zanetti - luizpaulo@fca.unesp.br -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema para cadastramento de Alunos de Graduação/Pós-Graduação na Intranet (local) da FCA/UNESP</description>
+    	<application-id>Sistema de Pré-Cadastro - Intranet FCA</application-id>
+	    <hosts>
+ 	    	<allow>200.145.140.208</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token> 
+    
+    
+    <!-- Nome/contato responsável técnico: Marcos Antunes - mantunes@reitoria.unesp.br -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema de processo de seleção e gestão dos intercâmbios dos estudantes de graduação</description>
+    	<application-id>Sistema de Intercâmbio (AREX)</application-id>
+	    <hosts>
+	    	<allow>200.145.92.196</allow> 
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/disciplinas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/estruturasCurriculares</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token> 
+    
+    <!-- Nome/contato responsável técnico: Wellington Alves - (11)3242-7171 (Ramal 403) / (11)3116-1724 -->
+    <token>
+    	<key>a3ee69c3baa44365b1184ca35966f0a5</key>
+    	<description>Consulta de alunos para concessão de descontos</description>
+    	<application-id>Editora UNESP</application-id>
+	    <hosts>
+ 	    	<allow>200.145.63.11</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao/pesquisa</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token> 
+    
+    <!-- Nome/contato responsável técnico: Wellington Alves - wsvieira@reitoria.unesp.br -->
+    <token>
+    	<key>e99ee7778b46839f1251f6ae610c74f4</key>
+    	<description>Sistema de Egressos - Sempre UNESP	</description>
+    	<application-id>Sempre UNESP</application-id>
+	    <hosts>
+ 	    	<allow>200.145.2.52</allow>
+ 	    	<allow>200.145.150.163</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/estruturasCurriculares</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/departamentosSecoes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>
+   	    <allow-service>
+	    	<uri>/api/v2/disciplinas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+   	    <allow-service>
+	    	<uri>/api/v2/turmas</uri>
+	    	<method>GET</method>
+	    </allow-service>	    
+    </token> 
+      
+    <!-- Nome/contato responsável técnico: Ana Paula Souza do Nascimento - ananascimento@nead.unesp.br -->
+    <token>
+    	<key>df2021cf0801547d1880ccfbe07ee52f</key>
+    	<description>Consulta de alunos para checar se um aluno pertence a UNESP</description>
+    	<application-id>Central de Cursos NEaD</application-id>
+	    <hosts>
+ 	    	<allow>200.145.1.92</allow>
+ 	    	<allow>2801:88:1000:ead::92</allow>
+ 	    	<allow>200.145.150.163</allow>
+ 	    	<allow>200.145.9.54</allow>
+ 	    	<allow>200.145.9.66</allow>
+ 	    	<allow>2801:88:ead::1:54</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>	    
+    </token> 
+
+    <!-- Nome/contato responsável técnico: Maria Lucia Decco Faucz/Andresa dos Santos (equipe-sisproex@fct.unesp.br) fone (18) 3229-5477 -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema de Extensão Universitária que faz o cadastramento de projetos e cursos, sua tramitação e a distribuição de bolsas e recursos.</description>
+    	<application-id>SISPROEX</application-id>
+	    <hosts>
+ 	    	<allow>200.145.101.113</allow>
+ 	    	<allow>200.145.181.22</allow>
+ 	    	<allow>200.145.181.143</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token> 
+    
+    
+    <!-- Nome/contato responsável técnico: Tim - tim@adm.feis.unesp.br -->
+    <token>
+    	<key>abcdef1234</key>
+    	<description>Sistema de Controle de Iniciação Científica da FEIS</description>
+    	<application-id>Controle de Iniciação Científica - FEIS</application-id>
+	    <hosts>
+ 	    	<allow></allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token> 
+    
+    
+    <!-- Nome/contato responsável técnico: Jean Felipe Arruda Guedes - jeanfag@feg.unesp.br - (12)3123-2737-->
+    <token>
+    	<key>9acfcb2ec4101536163c4b26b4d8e232</key>
+    	<description>Ferramenta para interação entre a ESU com os usuários</description>
+    	<application-id>Ferramenta de Suporte ao Usuário SISGRAD</application-id>
+	    <hosts>
+ 	    	<allow>200.145.11.48</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/departamentosSecoes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token> 
+    
+    <!-- Nome/contato responsável técnico: Jean Felipe Arruda Guedes - jeanfag@feg.unesp.br - (12)3123-2737-->
+    <token>
+    	<key>9acfcb2ec4101536163c4b26b4d8e232</key>
+    	<description>Ferramenta para cadastro e controle dos veículos que acessam a unidade</description>
+    	<application-id>Cadastro de Veículos - FEG</application-id>
+	    <hosts>
+ 	    	<allow>200.145.11.48</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token> 
+        
+    <!-- Nome/contato responsável técnico: Jean Felipe Arruda Guedes - jeanfag@feg.unesp.br - (12)3123-2737-->
+    <token>
+    	<key>9acfcb2ec4101536163c4b26b4d8e232</key>
+    	<description>Ferramenta para cadastro dos novos usuários da biblioteca. Os funcionários da biblioteca só cadastram os usuários no ALEPH após atingirem uma pontuação mínima de 70% no QUIZ disponível também na ferramenta.</description>
+    	<application-id>Treinamento da Biblioteca - FEG</application-id>
+	    <hosts>
+ 	    	<allow>200.145.11.48</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/estruturasCurriculares</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/departamentosSecoes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>         
+        
+        
+    <!-- Nome/contato responsável técnico: Ciro Marcos Silva / Silvio Carlos Sanita Galvão Gomes -->
+    <token>
+    	<key>7dfe201183bf221fc125c44e4802b50a</key>
+    	<description>Criação de avaliações institucionais que permitam aos alunos e ou docentes avaliarem disciplinas, docentes em disciplinas, o curso, a unidade universitária, as estruturas.</description>
+    	<application-id>Sistema de Avaliação Institucional</application-id>
+	    <hosts>
+ 	    	<allow>186.217.46.133</allow>
+ 	    	<allow>186.217.46.137</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    	<method>PUT</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/estruturasCurriculares</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/departamentosSecoes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>
+   	    <allow-service>
+	    	<uri>/api/v2/disciplinas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+   	    <allow-service>
+	    	<uri>/api/v2/docentes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+   	    <allow-service>
+	    	<uri>/api/v2/turmas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>    
+    
+    <!-- Nome/contato responsável técnico: Vicente W Borgatto Jr - vicente@nanosolusoft.com.br -->
+    <token>
+    	<key>0a1f2927ecae94b92aece9422e265153</key>
+    	<description>Sistema contratado pela PROGRAD, para inscrição em eventos e emissão de certificados. No momento da inscrição é necessário verificar se a pessoa possui algum vínculo com a UNESP.</description>
+    	<application-id>Sistema de Inscrição em Eventos e Emissão de Certificados</application-id>
+	    <hosts>
+ 	    	<allow>179.157.50.32</allow>
+ 	    	<allow>179.157.38.103</allow>
+ 	    	<allow>200.145.11.48</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>
+    
+    <!-- Nome/contato responsável técnico: José Henrique Silva - henriquesilva@feb.unesp.br -->
+    <token>
+    	<key>65a262e0c1a6682d44a1a1d1b53fef92</key>
+    	<description>O Sistema de Gestão Administrativa é o sistema que proporciona a sistematização e operacionalização de processos administrativos comuns nas unidades universitárias.</description>
+    	<application-id>Sistema de Gestão Administrativa (SGAd)</application-id>
+	    <hosts>
+ 	    	<allow>200.145.150.169</allow>
+ 	    	<allow>200.145.150.168</allow>
+ 	    	<allow>200.145.150.171</allow>
+ 	    	<allow>200.145.150.145</allow>
+ 	    	<allow>200.145.150.200</allow>
+ 	    	<allow>200.145.155.18</allow>
+ 	    	<allow>200.145.150.200</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao/pesquisa</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>
+    
+    <!-- Nome/contato responsável técnico: Valentim Aparecido Paris - tim@adm.feis.unesp.br -->
+    <token>
+    	<key>e6550cfbb2582d5ef904d29cf6b72fb1</key>
+    	<description>Sistema de Avaliação Institucional (AVALIA) da CPA</description>
+    	<application-id>Sistema de Avaliação Institucional (AVALIA)</application-id>
+	    <hosts>
+ 	    	<allow>200.145.241.70</allow>
+ 	    	<allow>200.145.241.20</allow>
+ 	    	<allow>200.145.93.215</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/departamentosSecoes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/disciplinas</uri>
+	    	<method>GET</method>
+	    </allow-service>	    
+	    <allow-service>
+	    	<uri>/api/v2/docentes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/turmas</uri>
+	    	<method>GET</method>
+	    </allow-service>	    	    	    
+    </token> 
+    
+    <!-- Nome/contato responsável técnico: Vanessa Solgate Belloti - vanessa@reitoria.unesp.br -->
+    <token>
+    	<key>1708e9ff6d32d446f8fd220a7afe4c3a</key>
+    	<description>Sistema da CPA, módulo de atividades docentes é responsável pela contabilização de pontos para a avaliação da carreira docente na Unesp</description>
+    	<application-id>Sistema da CPA, módulo de atividades docentes</application-id>
+	    <hosts>
+ 	    	<allow>200.145.2.134</allow>
+ 	    	<allow>2801:88:1000:2::fa0b</allow>
+ 	    	<allow>200.145.2.131</allow>
+ 	    	<allow>200.145.2.124</allow>
+ 	    	<allow>200.145.6.235</allow>
+ 	    	<allow>200.145.150.163</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/docentes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/turmas</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/estruturasCurriculares</uri>
+	    	<method>GET</method>
+	    </allow-service>	    
+    </token> 
+    
+    <!-- Nome/contato responsável técnico: André Araújo - andre@ict.unesp.br -->
+    <token>
+    	<key>56c8cfdf02d2c4297cb79690fd16b206</key>
+    	<description>Sistema Local do ICT para fornecimento de serviços aos usuários do campus</description>
+    	<application-id>Sistema Local do ICT</application-id>
+	    <hosts>
+ 	    	<allow>200.145.25.225</allow>
+ 	    	<allow>200.145.25.220</allow>
+ 	    	<allow>200.145.25.205</allow>
+ 	    	<allow>200.145.25.3</allow>
+ 	    	<allow>127.0.0.1</allow>
+	    </hosts>
+	    <allow-service>
+	    	<uri>/api/v2/alunosGraduacao</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/cursos</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/docentes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/departamentosSecoes</uri>
+	    	<method>GET</method>
+	    </allow-service>
+	    <allow-service>
+	    	<uri>/api/v2/unidadesUniversitarias</uri>
+	    	<method>GET</method>
+	    </allow-service>
+    </token>        
+</properties>

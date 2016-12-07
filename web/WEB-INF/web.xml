@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+  <display-name>ACADEMICO</display-name>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
+  <!-- Iniciar configuracoes do banco de dados -->
+  <listener>
+    <listener-class>br.unesp.web.ServletInitListener</listener-class>
+  </listener>
+  <filter>
+	<filter-name>HibernateFilter</filter-name>
+	<filter-class>br.unesp.web.HibernateFilter</filter-class>
+	<init-param>
+		<param-name>doNotLazy</param-name>
+		<param-value>false</param-value>
+	</init-param>	
+  </filter>
+  <filter-mapping>
+	<filter-name>HibernateFilter</filter-name>
+	<url-pattern>*.action</url-pattern>
+  </filter-mapping>
+  <!-- Filtro dos templates do sitemesh -->
+  <filter>
+    <filter-name>SSOFilter</filter-name>
+    <filter-class>br.unesp.web.SSOAuthorizationFilter</filter-class>
+    <init-param>
+      <param-name>url_public</param-name>
+      <param-value>^(/publico/.*)|(/api/.*)|(/captcha.jpg)|(/cron.*)$</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SSOFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- Filtro dos templates do sitemesh -->
+  <filter>
+    <filter-name>Sitemesh</filter-name>
+    <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Sitemesh</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- The Mentawai controller -->
+  <servlet>
+    <servlet-name>Mentawai</servlet-name>
+    <servlet-class>org.mentawai.core.Controller</servlet-class>
+    <init-param>
+      <param-name>applicationManager</param-name>
+      <param-value>br.unesp.ActionsManager</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Mentawai</servlet-name>
+    <url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+  
+  <!-- The Mentawai Debug Filter -->
+  <!--
+	<filter>  
+	    <filter-name>DebugFilter</filter-name>  
+	    <filter-class>  
+	        org.mentawai.util.DebugServletFilter
+		</filter-class>  
+	</filter>  
+  
+	<filter-mapping>  
+	    <filter-name>DebugFilter</filter-name>  
+	    <url-pattern>*.jsp</url-pattern>  
+	    <dispatcher>REQUEST</dispatcher>   
+	    <dispatcher>FORWARD</dispatcher>      
+	    <dispatcher>INCLUDE</dispatcher>      
+	    <dispatcher>ERROR</dispatcher>      
+	</filter-mapping>  
+  -->
+
+    <distributable/>
+    
+    <session-config>
+    	<session-timeout>10</session-timeout><!-- minutos -->
+    </session-config>
+    
+    <!-- JSF Mapping -->
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Development</param-value>
+  </context-param>
+  <welcome-file-list>
+    <welcome-file>index.jsf</welcome-file>
+  </welcome-file-list>
+  <mime-mapping>
+    <extension>js</extension>
+    <mime-type>application/javascript</mime-type>
+  </mime-mapping>
+  <context-param>
+    <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>client</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    <param-value>resources.application</param-value>
+  </context-param>
+  <filter>
+    <filter-name>DisableJSessionIdUrlFilter</filter-name>
+    <filter-class>br.unesp.core.jsf.servlets.DisableJSessionIdUrlFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>DisableJSessionIdUrlFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  
+  <context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>redmond</param-value>
+  </context-param>
+</web-app>

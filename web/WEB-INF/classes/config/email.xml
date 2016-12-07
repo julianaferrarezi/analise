@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+<email>
+
+<!-- *************************************************** -->
+
+<transferencia>
+{0}
+
+Recebemos sua inscrição\, clique no link abaixo para confirmar 
+o recebimento do e-mail.
+
+{1}
+
+Se não foi você que se efetuou a inscrição\, ignore esse e-mail.
+
+UNESP :: SGA : Sistema de Gestão Acadêmica - {2}
+</transferencia>
+
+<!-- *************************************************** -->
+
+<inscritoStatus>
+{0}
+
+Sua inscrição teve inclusão de um novo status\, clique 
+no link abaixo para visualizar.
+
+{1}
+
+UNESP :: SGA : Sistema de Gestão Acadêmica {2}
+</inscritoStatus>
+
+<!-- *************************************************** -->
+
+<documento>
+Prezado aluno(a) {0}\,
+
+O documento {1} solicitado\, estará disponível para
+retirada em {2} dias úteis.
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+{3}
+{4}
+</documento>
+
+<!-- *************************************************** -->
+
+<renovacaoMatricula>
+Prezado aluno(a) {0}\,
+
+{1}
+
+{2}
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+{3}
+</renovacaoMatricula>
+
+<!-- *************************************************** -->
+
+<confirmacaoCancelada>
+Prezado aluno(a) {0}\,
+
+{1}
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+{2}
+</confirmacaoCancelada>
+
+<!-- *************************************************** -->
+
+<reservaSala>
+Prezado docente {0}\,
+
+Seu pedido para reserva da sala {1} foi {2}.
+
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+{3}
+</reservaSala>
+
+<!-- *************************************************** -->
+
+<trocaSala>
+Prezado docente {0}\,
+
+Seu pedido para troca da sala {1} foi {2}.
+
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+{3}
+</trocaSala>
+
+<!-- *************************************************** -->
+
+<novaSolicitacao>
+Prezado Responsável por {0}\,
+
+O docente {1} lhe enviou um pedido de afastamento de {2} até {3}.
+
+Para visualizar a solicitação\, acesse o Módulo Departamento do sistema.
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+</novaSolicitacao>
+
+<!-- *************************************************** -->
+
+<decisaoDepartamento>
+Prezado {0}\,
+
+Sua solicitação de afastamento #{2} de {3} até {4} foi {1}deferida 
+pela chefia de departamento.
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+</decisaoDepartamento>
+
+<!-- *************************************************** -->
+
+<cancelamento>
+Prezado Responsável por {0}\,
+
+O docente {1} cancelou o pedido de afastamento #{4} de {2} até {3}..
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+</cancelamento>
+
+<!-- *************************************************** -->
+
+<relatorio>
+Prezado Responsável por {0}\,
+
+Segue em anexo o Documento de Afastamento referente à 
+solicitação Nº {1} enviado por {2}.
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+</relatorio>
+
+<!-- *************************************************** -->
+
+<relatorioPendente>
+Prezado {0}\,
+
+Sua solicitação Nº {1} encontra-se pendente 
+de preenchimento de relatório.
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+</relatorioPendente>
+
+<!-- *************************************************** -->
+
+<cancelamentoMatricula>
+Prezado {0}\,
+
+O aluno de RA {1} efetuou matrícula no Curso {2} da {3} em {4}, cancelando a matrícula que tinha atualmente na sua unidade. 
+
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+</cancelamentoMatricula>
+
+<!-- *************************************************** -->
+    
+<alteracaoHistorico>
+
+O histórico do aluno {0} na turma {1} de {2} foi {7} pelo funcionário {3}
+    	
+Conceito: {4}
+Frequência: {5}
+Nota Final: {6}
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+</alteracaoHistorico>    
+
+<!-- *************************************************** -->
+    
+<alteracaoNotasHistorico>
+
+As avaliações e faltas do aluno {0} na turma {1} de {2} foram gravadas pelo funcionário {3}
+    	
+{4}
+
+UNESP :: SGA : Sistema de Gestão Acadêmica
+</alteracaoNotasHistorico>    
+
+    
+</email>
+
+</properties>
