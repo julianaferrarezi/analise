@@ -17,7 +17,8 @@
   
     <ui:define name="content">
 		<h:form id="formAlunos">
-		
+			<p>Olá, #{graficosMB.alunoVO.nome}.</p>
+			<p:chart type="donut" model="#{graficosMB.donutModel1}" style="width:400px;height:300px" />	
 		</h:form>
 	</ui:define>	
 	
