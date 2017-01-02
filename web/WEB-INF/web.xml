@@ -19,18 +19,18 @@
   <listener>
     <listener-class>br.unesp.web.ServletInitListener</listener-class>
   </listener>
-  <filter>
-	<filter-name>HibernateFilter</filter-name>
-	<filter-class>br.unesp.web.HibernateFilter</filter-class>
-	<init-param>
-		<param-name>doNotLazy</param-name>
-		<param-value>false</param-value>
-	</init-param>	
-  </filter>
-  <filter-mapping>
-	<filter-name>HibernateFilter</filter-name>
-	<url-pattern>*.action</url-pattern>
-  </filter-mapping>
+<!--   <filter> -->
+<!-- 	<filter-name>HibernateFilter</filter-name> -->
+<!-- 	<filter-class>br.unesp.web.HibernateFilter</filter-class> -->
+<!-- 	<init-param> -->
+<!-- 		<param-name>doNotLazy</param-name> -->
+<!-- 		<param-value>false</param-value> -->
+<!-- 	</init-param>	 -->
+<!--   </filter> -->
+<!--   <filter-mapping> -->
+<!-- 	<filter-name>HibernateFilter</filter-name> -->
+<!-- 	<url-pattern>*.action</url-pattern> -->
+<!--   </filter-mapping> -->
   <!-- Filtro dos templates do sitemesh -->
   <filter>
     <filter-name>SSOFilter</filter-name>
