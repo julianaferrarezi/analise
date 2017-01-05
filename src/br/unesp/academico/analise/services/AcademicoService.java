@@ -1,78 +1,54 @@
 package br.unesp.academico.analise.services;
 
-import br.unesp.core.AbstractBasicService;
+import java.io.Serializable;
+import java.util.List;
+
 import br.unesp.core.ConfigHelper;
-import br.unesp.core.Log4jWrapper;
-import br.unesp.graduacao.api.v1.beans.AlunoGraduacaoVO;
-import br.unesp.graduacao.api.v1.client.AlunosGraduacaoClient;
-import br.unesp.graduacao.api.v1.client.ClientFactory;
-import br.unesp.graduacao.api.v1.client.CursosClient;
+import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoBasicoVO;
+import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoVO;
+import br.unesp.graduacao.api.v2.client.AlunosGraduacaoClient;
+import br.unesp.graduacao.api.v2.client.ClientFactory;
 
-public class AcademicoService extends AbstractBasicService {
-
-	private static AcademicoService instance = new AcademicoService();
-    private AlunoGraduacaoVO alunoGraduacaoVO = null;
+public class AcademicoService implements Serializable {
 	
-    private Log4jWrapper log = new Log4jWrapper(AcademicoService.class, null);
-      
-	public AcademicoService() {
-		try {
-			
-		} catch (Exception ex) {
-            log.fatal("Services não instanciados: ".concat(AcademicoService.class.getName()), ex);
+	private static final long serialVersionUID = -4381047292761841750L;
+	private AlunosGraduacaoClient alunosGraduacaoClient;
+	
+    public static AcademicoService getInstance() {
+        // Usando a V2, não dá para fazer o service Singleton! 
+        // O Resource dos Clientes mantém url no histórico.
+    	AcademicoService instance = new AcademicoService(); 
+    	instance.alunosGraduacaoClient =  ClientFactory.create(AlunosGraduacaoClient.class, ConfigHelper.get().getString("academico.api"), ConfigHelper.get().getString("academico.token"));
+    	
+    	return instance;
+    }
+    
+    public AlunoGraduacaoVO getAlunoPorEmail(String email){
+    	AlunoGraduacaoVO alunoVO = null;
+        try {
+            List<AlunoGraduacaoBasicoVO> alunos = alunosGraduacaoClient.filter(null, 2L, false, null, email.trim(), null);
+            if (alunos != null && !alunos.isEmpty()){
+                //É possível que exista mais de um registro ativo por aluno!
+                //Ex: Aluno matriculado em outro curso como Intercâmbio Nacional ou Aluno Especial.
+                if (alunos.size() == 1){
+                    return getAlunoGraduacaoVO(alunos.iterator().next().getId());
+                }
+                for (AlunoGraduacaoBasicoVO alunoBasico : alunos){
+                    AlunoGraduacaoVO aluno = getAlunoGraduacaoVO(alunoBasico.getId());
+                    if (aluno.getTipoIngresso().equals("Concurso Vestibular")){
+                        alunoVO = aluno;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-		
-	}
-	
-//	public UnidadeUniversitaria buscarUnidadeUniversitariaPorPessoaFisica(PessoaFisica pessoaFisica) {
-//		
-//		if (alunoGraduacaoVO == null) {
-//			alunoGraduacaoVO = getAlunoGraduacaoAtivoPorPessoaFisica(pessoaFisica);
-//		}
-//		
-//		if (alunoGraduacaoVO != null && alunoGraduacaoVO.isMatriculado()) {
-//			CursoVO cursoVO = getCursosClient().get(alunoGraduacaoVO.getIdCurso());
-//			return commonService.buscarUnidadeUniversitariaPorId(cursoVO.getIdUnidadeUniversitaria());
-//		} else {
-//			return null;
-//		}
-//	}
-	
-//	private AlunoGraduacaoVO getAlunoGraduacaoAtivoPorPessoaFisica(PessoaFisica pessoaFisica) {
-//		AlunoGraduacaoVO ag = getAlunosGraduacaoClient().getByEmail(pessoaFisica.getPessoa().getEmail());
-//        return ag != null && ag.isMatriculado() ? ag : null;
-//    }
-    
-//    public String getRegistroAlunoGraduacaoAtivo(PessoaFisica pessoaFisica) {
-//    	String ra = null;
-//    	    	
-//    	if (alunoGraduacaoVO == null) {
-//    		alunoGraduacaoVO = getAlunoGraduacaoAtivoPorPessoaFisica(pessoaFisica);
-//    	}
-//    	
-//    	if (alunoGraduacaoVO != null) {
-//    		ra = alunoGraduacaoVO.getRegistroAcademico();
-//    	}
-//    	return ra;
-//    }
-	
-	public AlunoGraduacaoVO getAlunoPorEmail(String email) {
-		return getAlunosGraduacaoClient().getByEmail(email);
-	}
-    
-    private AlunosGraduacaoClient getAlunosGraduacaoClient(){
-    	return ClientFactory.create(AlunosGraduacaoClient.class, ConfigHelper.get().getString("academico.api"));
+        return alunoVO;
     }
     
-    private CursosClient getCursosClient(){
-    	return ClientFactory.create(CursosClient.class, ConfigHelper.get().getString("academico.api"));
+    public AlunoGraduacaoVO getAlunoGraduacaoVO(Long idAluno){
+        AlunoGraduacaoVO alunoVO = alunosGraduacaoClient.get(idAluno);
+        return alunoVO;
     }
-    
-    public static final AcademicoService getInstance() {
-		if (instance == null)
-			instance = new AcademicoService();
-		
-		return instance;
-	}
 	
 }

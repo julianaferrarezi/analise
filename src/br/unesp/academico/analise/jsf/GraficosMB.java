@@ -11,7 +11,7 @@ import javax.faces.bean.ViewScoped;
 import org.primefaces.model.chart.DonutChartModel;
 
 import br.unesp.academico.analise.services.AcademicoService;
-import br.unesp.graduacao.api.v1.beans.AlunoGraduacaoVO;
+import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoVO;
 
 @ManagedBean(name = "graficosMB")
 @ViewScoped
@@ -26,20 +26,12 @@ public class GraficosMB implements Serializable {
 	@PostConstruct
 	public void init(){
 		academicoService = AcademicoService.getInstance();
-		
-
-		alunoVO = academicoService.getAlunoPorEmail("phms.1998@gmail.com");
-		
 		createDonutModels();
 	}
-	
-	
 	
 	public DonutChartModel getDonutModel1() {
 		return donutModel1;
 	}
-
-
 
 	private void createDonutModels() {
         donutModel1 = initDonutModel();
@@ -75,6 +67,17 @@ public class GraficosMB implements Serializable {
     }
 	
 	public AlunoGraduacaoVO getAlunoVO() {
+		if (alunoVO == null) {
+			String email = "phms.1998@gmail.com";
+			alunoVO = academicoService.getAlunoPorEmail(email);
+			
+//			alunoVO = new AlunoGraduacaoVO();
+//			alunoVO.setCpf("1212121");
+//			
+//			List<AlunoGraduacaoVO> lista = new ArrayList<AlunoGraduacaoVO>();
+//			lista.add(alunoVO);
+		}
+		
 		return alunoVO;
 	}
 
