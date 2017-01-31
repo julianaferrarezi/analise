@@ -17,8 +17,40 @@
   
     <ui:define name="content">
 		<h:form id="formAlunos">
-			<p>Olá, #{graficosMB.alunoVO.nome}.</p>
-			<p:chart type="donut" model="#{graficosMB.donutModel1}" style="width:400px;height:300px" />	
+
+			<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+<!-- 				<p:row> 
+					<p:outputLabel for="tipo" value="Selecione o tipo do gráfico:" />
+					<p:selectOneRadio id="tipo" value="#{graficosMB.tipo}" layout="grid" columns="3">
+						<f:selectItems value="#{graficosMB.tipos}" var="t" itemLabel="#{tipo}" itemValue="#{tipo}"/>
+					</p:selectOneRadio>
+				</p:row> -->
+				<p:row>
+					<p:outputLabel for="eixoX" value="Opções de eixo X:" />
+					<p:selectOneRadio id="eixoX" value="#{graficosMB.eixoX}" layout="grid" columns="3">
+						<f:selectItems value="#{graficosMB.eixosX}" var="x" itemLabel="#{eixoX}" itemValue="#{eixoX}" />
+					</p:selectOneRadio>
+				</p:row>
+				<p:row>
+					<p:outputLabel for="eixoY" value="Opções de eixo Y:" />
+					<p:selectOneRadio id="eixoY" value="#{graficosMB.eixoY}" layout="grid" columns="3">
+						<f:selectItems value="#{graficosMB.eixosY}" var="y" itemLabel="#{eixoY}" itemValue="#{eixoY}" />
+					</p:selectOneRadio>
+				</p:row>
+<!-- 				<p:row> 
+					<p:inputText id="de" value="#{graficosMB.anoComeco}"/>até
+					<p:inputText id="ate" value="#{graficoMB.anoFim}" />
+				</p:row>  -->
+			</h:panelGrid>
+			
+		<p:commandButton update="grafico" value="Ver gráfico" actionListener="#{graficosMB.verGrafico}"/>
+			
+			<br></br>
+			<br></br>
+			
+			<p:chart type="bar" id="grafico" model="#{graficosMB.barModel}" style="width:500px;height:400px;float:left;"/>
+			<p:chart type="line" id="grafico2" model="#{graficosMB.lineModel}" style="width:500px;height:400px;float:left;margin-left:100px;"/>
+			
 		</h:form>
 	</ui:define>	
 	

@@ -8,10 +8,10 @@ import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoBasicoVO;
 import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoVO;
 import br.unesp.graduacao.api.v2.client.AlunosGraduacaoClient;
 import br.unesp.graduacao.api.v2.client.ClientFactory;
+import br.unesp.graduacao.api.v2.client.CursosClient;
 
-public class AcademicoService implements Serializable {
+public class AcademicoService {
 	
-	private static final long serialVersionUID = -4381047292761841750L;
 	private AlunosGraduacaoClient alunosGraduacaoClient;
 	
     public static AcademicoService getInstance() {
