@@ -1,6 +1,6 @@
 package br.unesp.academico.analise.jsf;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,7 +23,7 @@ import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoVO;
 
 @ManagedBean(name = "graficosMB")
 @ViewScoped
-public class GraficosMB implements Serializable {
+public class GraficosMB {
 	private static final long serialVersionUID = 8927538487452737559L;
 	
 	
@@ -44,7 +44,7 @@ public class GraficosMB implements Serializable {
 
 	@PostConstruct
 	public void init(){
-		System.out.println(getAlunoVO().getNome());
+		//System.out.println(getAlunoVO().getNome());
 		
 		academicoService = AcademicoService.getInstance();
 		createBarModel(getAlunoVO().getNome(),"Idade");
@@ -178,7 +178,7 @@ public class GraficosMB implements Serializable {
 	public AlunoGraduacaoVO getAlunoVO() {
 		if (alunoVO == null) {
 			//String email = "phms.1998@gmail.com";
-			academicoService = new AcademicoService();
+//			academicoService = new AcademicoService();
 			alunoVO = academicoService.getAlunoPorEmail("phms.1998@gmail.com");
 			
 //			alunoVO.setDataPrimeiraMatricula(dataPrimeiraMatricula);

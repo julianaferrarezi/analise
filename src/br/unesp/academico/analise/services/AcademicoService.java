@@ -1,6 +1,5 @@
 package br.unesp.academico.analise.services;
 
-import java.io.Serializable;
 import java.util.List;
 
 import br.unesp.core.ConfigHelper;
@@ -8,7 +7,6 @@ import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoBasicoVO;
 import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoVO;
 import br.unesp.graduacao.api.v2.client.AlunosGraduacaoClient;
 import br.unesp.graduacao.api.v2.client.ClientFactory;
-import br.unesp.graduacao.api.v2.client.CursosClient;
 
 public class AcademicoService {
 	
