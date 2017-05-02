@@ -5,19 +5,26 @@ import java.util.List;
 import br.unesp.core.ConfigHelper;
 import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoBasicoVO;
 import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoVO;
+import br.unesp.graduacao.api.v2.beans.CursoVO;
+import br.unesp.graduacao.api.v2.beans.UnidadeUniversitariaVO;
 import br.unesp.graduacao.api.v2.client.AlunosGraduacaoClient;
 import br.unesp.graduacao.api.v2.client.ClientFactory;
+import br.unesp.graduacao.api.v2.client.CursosClient;
+import br.unesp.graduacao.api.v2.client.UnidadesUniversitariasClient;
 
 public class AcademicoService {
 	
 	private AlunosGraduacaoClient alunosGraduacaoClient;
+	private UnidadesUniversitariasClient unidadesUniversitariasClient;
+	private CursosClient cursosClient;
 	
     public static AcademicoService getInstance() {
         // Usando a V2, não dá para fazer o service Singleton! 
         // O Resource dos Clientes mantém url no histórico.
     	AcademicoService instance = new AcademicoService(); 
     	instance.alunosGraduacaoClient =  ClientFactory.create(AlunosGraduacaoClient.class, ConfigHelper.get().getString("academico.api"), ConfigHelper.get().getString("academico.token"));
-    	
+    	instance.unidadesUniversitariasClient = ClientFactory.create(UnidadesUniversitariasClient.class, ConfigHelper.get().getString("academico.api"), ConfigHelper.get().getString("academico.token"));
+    	instance.cursosClient = ClientFactory.create(CursosClient.class, ConfigHelper.get().getString("academico.api"), ConfigHelper.get().getString("academico.token"));
     	return instance;
     }
     
@@ -43,6 +50,52 @@ public class AcademicoService {
         }
         return alunoVO;
     }
+    
+    public List<AlunoGraduacaoVO> getAlunosPorUnidade(Long idUnidade){
+    	List<AlunoGraduacaoVO> unidade = null;
+    	try {
+    		unidade = unidadesUniversitariasClient.getCursandoDisciplinasPorUnidadeUniversitariaAnoSemestre(idUnidade, 2016, 2);
+    		return unidade;
+    	
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	return unidade;
+	}
+    
+    public UnidadeUniversitariaVO getUnidade(String sigla) {
+    	UnidadeUniversitariaVO unidade = unidadesUniversitariasClient.getBySigla(sigla);
+    	return unidade;
+    }
+    
+    public List<CursoVO> getCursosPorUnidade(String sigla) {
+    	Long idUnidade = getUnidade(sigla).getId();
+    	List<CursoVO> cursos = unidadesUniversitariasClient.getCursos(idUnidade);
+    	return cursos;
+    }
+    
+    public CursoVO getCurso(Long idCurso) {
+    	CursoVO curso = cursosClient.get(idCurso);
+    	return curso;
+    }
+    
+    public List<AlunoGraduacaoVO> getAlunosPorCurso(Long idCurso) {
+    	List<AlunoGraduacaoVO> alunos = cursosClient.getAlunosGraduacaoMatriculados(idCurso);
+    	return alunos;
+    }
+     
+    
+    /*public int getAlunosPorUnidade(String email){
+    	//List<AlunoGraduacaoBasicoVO> alunos = null;
+        try {
+        	List<AlunoGraduacaoBasicoVO> alunos = alunosGraduacaoClient.filter(null, 2L, true, null, null, null);
+        	return (alunos.size());
+        	
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }*/
     
     public AlunoGraduacaoVO getAlunoGraduacaoVO(Long idAluno){
         AlunoGraduacaoVO alunoVO = alunosGraduacaoClient.get(idAluno);
