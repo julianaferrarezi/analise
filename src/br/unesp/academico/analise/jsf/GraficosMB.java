@@ -67,33 +67,12 @@ public class GraficosMB {
 
 	@PostConstruct
 	public void init(){
-
-		//System.out.println(getAlunoVO().getNome());
-		
 		academicoService = AcademicoService.getInstance();
 		createBarModel();
 		createDonutModelSexosPorUnidade();
 		createDonutModelTipoIngresso();
 		createLineModelMatriculados();
 		createDonutModelSexosPorCurso();
-		
-		/*String nome = getAlunoVO().getNome();
-		System.out.println(nome);
-		
-		createBarModel(nome,"Idade");
-		createLineModel("", "");
-		tipos = new ArrayList<String>();
-		tipos.add("Barras");
-		tipos.add("Setores");
-		tipos.add("Linhas");
-		eixosX = new ArrayList<String>();
-		eixosX.add("Nome");
-		eixosX.add("Anos");
-		eixosX.add("Estado civil");
-		//eixosY = new ArrayList<String>();
-		//eixosY.add("Idade");
-		//eixosY.add("Quantidade de matriculados");
-		this.eixoX = "Nome";*/
 	}
 	
 	//************************************************************************************************************
@@ -190,9 +169,6 @@ public class GraficosMB {
 	private void createBarModel() {	
 		barModel = initBarModel();
 		barModel.setTitle("Gráfico de barras / 2016");
-	/*private void createBarModel(String eixoX, String eixoY) {
-		barModel = initBarModel(eixoX,eixoY);
-		barModel.setTitle("Grï¿½fico de barras");*/
 		Axis xAxis = barModel.getAxis(AxisType.X);
 		xAxis.setLabel("Unidade universitária");
 		Axis yAxis = barModel.getAxis(AxisType.Y);
@@ -320,15 +296,6 @@ public class GraficosMB {
 		}
 		model.addCircle(serieTipoIngresso);
 		return model;
-	/*private void createLineModel(String eixoX, String eixoY) {
-		lineModel = initLineModel();
-		lineModel.setTitle("Grï¿½fico de linhas");
-		Axis xAxis = lineModel.getAxis(AxisType.X);
-		xAxis.setLabel(eixoX);
-		Axis yAxis = lineModel.getAxis(AxisType.Y);
-		yAxis.setLabel(eixoY);
-		yAxis.setMin(10);
-		yAxis.setMax(50);*/
 	}
 	
 	private DonutChartModel initDonutModelSexosPorUnidade() {
@@ -351,12 +318,6 @@ public class GraficosMB {
 					}
 				}
 			}
-		/*if(eixoX.equals("Nome")) {
-			ChartSeries serieNome = new ChartSeries();
-			serieNome.set("Antï¿½nio", 10);
-			serieNome.set("Carlos", 10);
-			serieNome.set("Edson", 20);
-			model.addSeries(serieNome);*/
 		}
 		circulo.put("Masculino", m);
 		circulo.put("Feminino", f);
@@ -426,44 +387,6 @@ public class GraficosMB {
 	public List<CursoVO> getCursosPorUnidade(String sigla) {
 		List<CursoVO> cursos = academicoService.getCursosPorUnidade(sigla);
 		return cursos;
-	/*public AlunoGraduacaoVO getAlunoVO() {
-		if (alunoVO == null) {
-			//String email = "phms.1998@gmail.com";
-//			academicoService = new AcademicoService();
-			alunoVO = academicoService.getAlunoPorEmail("phms.1998@gmail.com");
-			
-//			alunoVO.setDataPrimeiraMatricula(dataPrimeiraMatricula);
-			
-//			alunoVO.setDataPrimeiraMatricula(new Date());
-			
-//		Calendar c = new GregorianCalendar();
-//		c.set(GregorianCalendar.MONTH, 7);
-//		alunoVO.setDataPrimeiraMatricula(c.getTime());
-			
-			listaAlunos = new ArrayList<AlunoGraduacaoVO>();
-			//alunoVO = new AlunoGraduacaoVO();
-			//alunoVO.setNome("Antï¿½nio");
-			//alunoVO.setEstadoCivil("casado");
-			//alunoVO.setMatriculado(true);
-			//listaAlunos.add(alunoVO);
-			
-			//alunoVO.setNome("Carlos");
-			//alunoVO.setEstadoCivil("casado");
-			//alunoVO.setMatriculado(true);
-			//listaAlunos.add(alunoVO);
-			
-			//alunoVO.setNome("Josï¿½");
-			//alunoVO.setEstadoCivil("solteiro");
-			//alunoVO.setMatriculado(true);
-			//listaAlunos.add(alunoVO);
-			
-			//alunoVO.setNome("Rafaela");
-			//alunoVO.setEstadoCivil("solteiro");
-			//alunoVO.setMatriculado(false);
-			//listaAlunos.add(alunoVO);
-		}
-		
-		return alunoVO;*/
 	}
 	
 	
