@@ -8,7 +8,6 @@ import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -23,6 +22,8 @@ import org.primefaces.model.chart.DonutChartModel;
 import org.primefaces.model.chart.LineChartModel;
 
 import br.unesp.academico.analise.services.AcademicoService;
+import br.unesp.academico.analise.services.UnidadeUniversitariaService;
+import br.unesp.exception.ServiceValidationException;
 import br.unesp.graduacao.api.v2.beans.AlunoGraduacaoVO;
 import br.unesp.graduacao.api.v2.beans.CursoVO;
 import br.unesp.graduacao.api.v2.beans.UnidadeUniversitariaVO;
@@ -35,11 +36,12 @@ public class GraficosMB {
 	
 	//Variaveis de conexao ao AcademicoService
 	private AcademicoService academicoService = null;
+	private UnidadeUniversitariaService unidadeUniversitariaService = null;
 	
 	//Variaveis de dados
-	private String[] cSelSexos = {"Sistemas de InformaÁ„o"};
+	private String[] cSelSexos = {"Sistemas de Informa√ß√£o"};
 	private String[] uSelSexos = {"FC"};
-	private String[] cSelTipoIngresso = {"Sistemas de InformaÁ„o"};
+	private String[] cSelTipoIngresso = {"Sistemas de Informa√ß√£o"};
 	private String[] uSelTipoIngresso = {"FC"};
 	private List<String> lcSexos;
 	private List<String> lcTipoIngresso;
@@ -73,6 +75,18 @@ public class GraficosMB {
 		createDonutModelTipoIngresso();
 		createLineModelMatriculados();
 		createDonutModelSexosPorCurso();
+		
+		//Teste para buscar unidades
+		unidadeUniversitariaService = new UnidadeUniversitariaService();
+		try {
+			List<br.unesp.academico.analise.vo.UnidadeUniversitariaVO> listaUnidade = unidadeUniversitariaService.listarUnidades();
+			for (br.unesp.academico.analise.vo.UnidadeUniversitariaVO unidadeUniversitariaVO : listaUnidade) {
+				System.out.println(unidadeUniversitariaVO);
+			}
+		} catch (ServiceValidationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	//************************************************************************************************************
@@ -168,9 +182,9 @@ public class GraficosMB {
 
 	private void createBarModel() {	
 		barModel = initBarModel();
-		barModel.setTitle("Gr·fico de barras / 2016");
+		barModel.setTitle("Gr√°fico de barras / 2016");
 		Axis xAxis = barModel.getAxis(AxisType.X);
-		xAxis.setLabel("Unidade universit·ria");
+		xAxis.setLabel("Unidade universit√°ria");
 		Axis yAxis = barModel.getAxis(AxisType.Y);
 		yAxis.setLabel("Quantidade de alunos");
 		yAxis.setMin(0);
@@ -191,7 +205,7 @@ public class GraficosMB {
 	
 	private void createDonutModelTipoIngresso() {
 		donutModelTipoIngresso = initDonutModelTipoIngresso();
-		donutModelTipoIngresso.setTitle("Gr·fico de tipos de ingresso");
+		donutModelTipoIngresso.setTitle("Gr√°fico de tipos de ingresso");
 		donutModelTipoIngresso.setLegendPosition("w");
 		donutModelTipoIngresso.setShowDataLabels(true);
 		donutModelTipoIngresso.setDataFormat("percent");
@@ -199,7 +213,7 @@ public class GraficosMB {
 	
 	private void createDonutModelSexosPorUnidade() {
 		donutModelSexosPorUnidade = initDonutModelSexosPorUnidade();
-		donutModelSexosPorUnidade.setTitle("Gr·fico de donut");
+		donutModelSexosPorUnidade.setTitle("Gr√°fico de donut");
 		donutModelSexosPorUnidade.setLegendPosition("e");
 		donutModelSexosPorUnidade.setShowDataLabels(true);
 		donutModelSexosPorUnidade.setDataFormat("value");
@@ -425,7 +439,7 @@ public class GraficosMB {
 		
 		listaAlunos = new ArrayList<AlunoGraduacaoVO>();
 		alunoVO = new AlunoGraduacaoVO();
-		alunoVO.setNome("AntÙnio");
+		alunoVO.setNome("Ant√¥nio");
 		alunoVO.setEstadoCivil("casado");
 		alunoVO.setMatriculado(true);
 		listaAlunos.add(alunoVO);
@@ -435,7 +449,7 @@ public class GraficosMB {
 		alunoVO.setMatriculado(true);
 		listaAlunos.add(alunoVO);
 		
-		alunoVO.setNome("JosÈ");
+		alunoVO.setNome("Jos√©");
 		alunoVO.setEstadoCivil("solteiro");
 		alunoVO.setMatriculado(true);
 		listaAlunos.add(alunoVO);
