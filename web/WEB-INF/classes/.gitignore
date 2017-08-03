@@ -1,7 +1,7 @@
 /build/
 /.gitignore
-/WebContent
-/br
+/WebContent/
+/br/
 /build.xml
-/config
-/emails
+/config/
+/emails/

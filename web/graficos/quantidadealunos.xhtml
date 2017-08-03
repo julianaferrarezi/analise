@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ui:composition template="/templates/principal.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pe="http://primefaces.org/ui/extensions" 
+    >
+     
+	<ui:define name="title">Quantidade de alunos</ui:define>
+	
+	<ui:define name="header">
+		<meta name="header" content="Gráfico" />
+	</ui:define>
+  
+    <ui:define name="content">
+		<h:form id="formAlunos">
+					<p:panelGrid columns="1" cellspacing="0">
+							Selecione a unidade universitária:
+							<p:selectOneRadio id="unidade" value="#{graficosMB.unidadeUniversitaria}" layout="grid" columns="16">
+								<f:selectItems value="#{graficosMB.unidadesUniversitarias}" var="unidades" itemLabel="#{unidades}" itemValue="#{unidades}" />
+								<p:ajax update="cursos" />
+							</p:selectOneRadio>
+					</p:panelGrid>
+					<p:panelGrid columns="1" cellspacing="0">
+						Selecione o(s) curso(s):
+						<p:selectManyCheckbox id="cursos" value="#{graficosMB.cursosSelecionados}" layout="grid" columns="7">
+							<f:selectItems value="#{graficosMB.cursos}" var="cursos" itemLabel="#{cursos.nome}" itemValue="#{cursos.id}" />
+							<p:ajax listener="#{graficosMB.novoBarraAlunos}" />
+							<p:ajax update="tiposIngresso" listener="#{graficosMB.adicionaAlunos}" />
+							<p:ajax update="grafico" />
+						</p:selectManyCheckbox>
+					</p:panelGrid>
+					<p:panelGrid columns="1" cellspacing="0">
+						Selecione o(s) tipo(s) de ingresso:
+						<p:selectManyCheckbox id="tiposIngresso" value="#{graficosMB.tiposSelecionados}" layout="grid" columns="7">
+							<f:selectItems value="#{graficosMB.tiposIngresso}" var="tipos" itemLabel="#{tipos}" itemValue="#{tipos}" />
+							<p:ajax update="grafico" />
+						</p:selectManyCheckbox>
+					</p:panelGrid>
+
+					<p:chart type="bar" id="grafico" model="#{graficosMB.barraAlunos}" style="width:800px;height:500px;" />
+		</h:form>
+	</ui:define>	
+	
+</ui:composition>
