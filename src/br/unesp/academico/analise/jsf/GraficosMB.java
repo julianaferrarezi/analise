@@ -73,7 +73,7 @@ public class GraficosMB {
 	
 	private BarChartModel   barraAlunos;
 	
-	ChartSeries serieCursos = new ChartSeries();
+	//ChartSeries serieCursos = new ChartSeries();
 	
 
 	@PostConstruct
@@ -83,7 +83,7 @@ public class GraficosMB {
 		
 		cursosSelecionados = new ArrayList<String>();
 		tiposSelecionados = new ArrayList<String>();
-		novoBarraAlunos();
+		//novoBarraAlunos();
 	}
 	
 	//************************************************************************************************************
@@ -218,17 +218,82 @@ public class GraficosMB {
 	
 	public void novoBarraAlunos() {
 		barraAlunos = null;
-		Map<String, Number> selecionados = new HashMap<String, Number>();
+		ChartSeries serieCursos = new ChartSeries();
 		
 		if(!cursosSelecionados.isEmpty()) {
 			barraAlunos = new BarChartModel();
+			alunos = new ArrayList<AlunoGraduacaoVO>();
 			for(String curso : cursosSelecionados) {
+				List<AlunoGraduacaoVO> alunos = academicoService.getAlunosPorCurso(Long.parseLong(curso));
+				CursoVO c = academicoService.getCurso(Long.parseLong(curso));
+				serieCursos.set(c.getNome(), alunos.size());
+				if((this.alunos).isEmpty()) {
+					this.alunos = academicoService.getAlunosPorCurso(Long.parseLong(curso));
+				}
+				else {
+					(this.alunos).addAll(academicoService.getAlunosPorCurso(Long.parseLong(curso)));
+				}
+			}
+			serieCursos.setLabel("Total de alunos");
+			barraAlunos.addSeries(serieCursos);
+			barraAlunos.setTitle("Quantidade de alunos");
+			Axis eixoX = barraAlunos.getAxis(AxisType.X);
+			eixoX.setTickAngle(30);
+			eixoX.setLabel("Cursos");
+			barraAlunos.setLegendPosition("ne");
+			barraAlunos.setShowPointLabels(true);
+			barraAlunos.setMouseoverHighlight(false);
+			barraAlunos.setShowDatatip(false);
+			
+			if(!tiposSelecionados.isEmpty()) {
+				Map<String, ChartSeries> selecionados = new HashMap<String, ChartSeries>();
+				
+				for(AlunoGraduacaoVO a : alunos) {
+					if(tiposSelecionados.contains(a.getTipoIngresso())) {
+						if(selecionados.containsKey(a.getTipoIngresso())) {
+							ChartSeries s = selecionados.get(a.getTipoIngresso());
+							CursoVO c = academicoService.getCurso(a.getIdCurso());
+							Number numero = s.getData().get(c.getNome());
+							numero = numero.intValue() + 1;
+							s.set(c.getNome(), numero);
+							selecionados.replace(a.getTipoIngresso(), s);
+						}
+						else {
+							ChartSeries s = new ChartSeries();
+							s.setLabel(a.getTipoIngresso());
+							CursoVO c = academicoService.getCurso(a.getIdCurso());
+							
+							for(Map.Entry<Object, Number> curso : serieCursos.getData().entrySet()) {
+								s.set(curso.getKey(), 0);
+							}
+							
+							s.set(c.getNome(), 1);
+							selecionados.put(a.getTipoIngresso(), s);
+						}
+					}
+				}
+				for(Map.Entry<String, ChartSeries> series : selecionados.entrySet()) {
+					barraAlunos.addSeries(series.getValue());
+				}
+			}
+		}
+		else {
+			barraAlunos = new BarChartModel();
+			ChartSeries serieCursos2 = new ChartSeries();
+			serieCursos2.set("-", 0);
+			barraAlunos.addSeries(serieCursos2);
+		}
+		
+		
+		/*if(!cursosSelecionados.isEmpty()) {
+			barraAlunos = new BarChartModel();
+			for(String curso : cursosSelecionados) {
+				Map<String, Number> selecionados = new HashMap<String, Number>();
 				List<AlunoGraduacaoVO> alunos = academicoService.getAlunosPorCurso(Long.parseLong(curso));
 				CursoVO c = academicoService.getCurso(Long.parseLong(curso));
 				
 				serieCursos.set(c.getNome(), alunos.size());
 				serieCursos.setLabel("Total de alunos");
-				barraAlunos.addSeries(serieCursos);
 				
 				if(!tiposSelecionados.isEmpty()) {
 					for(AlunoGraduacaoVO a : alunos) {
@@ -242,13 +307,15 @@ public class GraficosMB {
 						}
 					}
 					for(Map.Entry<String, Number> s : selecionados.entrySet()) {
-						ChartSeries serieTipos = new ChartSeries();
+						ChartSeries serieTipos = null;
+						serieTipos = new ChartSeries();
 						serieTipos.set(c.getNome(), s.getValue());
 						serieTipos.setLabel(s.getKey());
 						barraAlunos.addSeries(serieTipos);
 					}
 				}
 			}
+			barraAlunos.addSeries(serieCursos);
 			barraAlunos.setTitle("Quantidade de alunos");
 			Axis eixoX = barraAlunos.getAxis(AxisType.X);
 			eixoX.setTickAngle(30);
@@ -260,10 +327,10 @@ public class GraficosMB {
 		}
 		else {
 			barraAlunos = new BarChartModel();
-			ChartSeries serieCursos = new ChartSeries();
-			serieCursos.set("-", 0);
-			barraAlunos.addSeries(serieCursos);
-		}
+			ChartSeries serieCursos2 = new ChartSeries();
+			serieCursos2.set("-", 0);
+			barraAlunos.addSeries(serieCursos2);
+		}*/
 	}
 	
 	

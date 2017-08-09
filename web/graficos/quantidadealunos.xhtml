@@ -28,7 +28,7 @@
 						Selecione o(s) curso(s):
 						<p:selectManyCheckbox id="cursos" value="#{graficosMB.cursosSelecionados}" layout="grid" columns="7">
 							<f:selectItems value="#{graficosMB.cursos}" var="cursos" itemLabel="#{cursos.nome}" itemValue="#{cursos.id}" />
-							<p:ajax listener="#{graficosMB.novoBarraAlunos}" />
+							
 							<p:ajax update="tiposIngresso" listener="#{graficosMB.adicionaAlunos}" />
 							<p:ajax update="grafico" />
 						</p:selectManyCheckbox>
