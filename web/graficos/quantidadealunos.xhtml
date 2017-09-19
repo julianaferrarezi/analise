@@ -17,31 +17,51 @@
   
     <ui:define name="content">
 		<h:form id="formAlunos">
-					<p:panelGrid columns="1" cellspacing="0">
+					<p:panelGrid columns="1" cellspacing="0" style="width:100%">
 							Selecione a unidade universitária:
-							<p:selectOneRadio id="unidade" value="#{graficosMB.unidadeUniversitaria}" layout="grid" columns="16">
+							<p:selectOneRadio id="unidade" value="#{graficosMB.unidadeUniversitaria}" layout="grid" columns="17">
 								<f:selectItems value="#{graficosMB.unidadesUniversitarias}" var="unidades" itemLabel="#{unidades}" itemValue="#{unidades}" />
 								<p:ajax update="cursos" />
 							</p:selectOneRadio>
 					</p:panelGrid>
-					<p:panelGrid columns="1" cellspacing="0">
+					<p:panelGrid columns="1" cellspacing="0" style="width:100%;">
 						Selecione o(s) curso(s):
-						<p:selectManyCheckbox id="cursos" value="#{graficosMB.cursosSelecionados}" layout="grid" columns="7">
+						<p:selectManyCheckbox id="cursos" value="#{graficosMB.cursosSelecionados}" layout="grid" columns="17">
 							<f:selectItems value="#{graficosMB.cursos}" var="cursos" itemLabel="#{cursos.nome}" itemValue="#{cursos.id}" />
 							
-							<p:ajax update="tiposIngresso" listener="#{graficosMB.adicionaAlunos}" />
-							<p:ajax update="grafico" />
+							<p:ajax update="cursos" listener="#{graficosMB.todosCursos}" />
+							<p:ajax update="tipoIngresso" />
+							<p:ajax update="situacao" />
 						</p:selectManyCheckbox>
 					</p:panelGrid>
-					<p:panelGrid columns="1" cellspacing="0">
+					<p:panelGrid columns="1" cellspacing="0" style="width:100%;">
 						Selecione o(s) tipo(s) de ingresso:
-						<p:selectManyCheckbox id="tiposIngresso" value="#{graficosMB.tiposSelecionados}" layout="grid" columns="7">
+						<p:selectManyCheckbox id="tipoIngresso" value="#{graficosMB.tiposSelecionados}" layout="grid" columns="7">
 							<f:selectItems value="#{graficosMB.tiposIngresso}" var="tipos" itemLabel="#{tipos}" itemValue="#{tipos}" />
 							<p:ajax update="grafico" />
 						</p:selectManyCheckbox>
 					</p:panelGrid>
+					<p:panelGrid columns="1" cellspacing="0" style="width:100%;">
+						Selecione a situação:
+						<p:selectOneRadio id="situacao" value="#{graficosMB.situacao}" layout="grid" columns="7">
+							<f:selectItems value="#{graficosMB.situacoes}" var="sit" itemLabel="#{sit}" itemValue="#{sit}" />
+							<p:ajax update="grafico" />
+						</p:selectOneRadio>
+					</p:panelGrid>
+					<p:panelGrid columns="1" cellspacing="0" style="width:100%;">
+						Selecione o sexo:
+						<p:selectOneRadio id="sexo" value="#{graficosMB.sexo}" layout="grid" columns="7">
+							<f:selectItem itemLabel="Todos" itemValue="Todos" />
+							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+							<p:ajax update="grafico" />
+						</p:selectOneRadio>
+					</p:panelGrid>
 
-					<p:chart type="bar" id="grafico" model="#{graficosMB.barraAlunos}" style="width:800px;height:500px;" />
+					<br></br>
+					<center>
+						<p:chart type="bar" id="grafico" model="#{graficosMB.barraAlunos}" style="width:800px;height:500px;" />
+					</center>
 		</h:form>
 	</ui:define>	
 	

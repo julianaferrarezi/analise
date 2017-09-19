@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ui:composition template="/templates/principal.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pe="http://primefaces.org/ui/extensions" 
+    >
+     
+	<ui:define name="title"></ui:define>
+	
+	<ui:define name="header">
+		<meta name="header" content="Gráfico" />
+	</ui:define>
+  
+    <ui:define name="content">
+		<h:form id="formAlunos">
+					<center>
+						<p:chart type="bar" id="grafico" model="#{graficosMB.barraAlunos}" style="width:800px;height:500px;" />
+					</center>
+		</h:form>
+	</ui:define>	
+	
+</ui:composition>
