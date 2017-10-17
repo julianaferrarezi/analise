@@ -24,6 +24,8 @@
 								<p:ajax update="cursos" />
 							</p:selectOneRadio>
 					</p:panelGrid>
+					<br></br>
+					<br></br>	
 					<p:panelGrid columns="1" cellspacing="0" style="width:100%;">
 						Selecione o(s) curso(s):
 						<p:selectManyCheckbox id="cursos" value="#{graficosMB.cursosSelecionados}" layout="grid" columns="17">
@@ -34,6 +36,8 @@
 							<p:ajax update="situacao" />
 						</p:selectManyCheckbox>
 					</p:panelGrid>
+					<br></br>
+					<br></br>
 					<p:panelGrid columns="1" cellspacing="0" style="width:100%;">
 						Selecione o(s) tipo(s) de ingresso:
 						<p:selectManyCheckbox id="tipoIngresso" value="#{graficosMB.tiposSelecionados}" layout="grid" columns="7">
@@ -41,6 +45,8 @@
 							<p:ajax update="grafico" />
 						</p:selectManyCheckbox>
 					</p:panelGrid>
+					<br></br>
+					<br></br>
 					<p:panelGrid columns="1" cellspacing="0" style="width:100%;">
 						Selecione a situação:
 						<p:selectOneRadio id="situacao" value="#{graficosMB.situacao}" layout="grid" columns="7">
@@ -48,6 +54,8 @@
 							<p:ajax update="grafico" />
 						</p:selectOneRadio>
 					</p:panelGrid>
+					<br></br>
+					<br></br>
 					<p:panelGrid columns="1" cellspacing="0" style="width:100%;">
 						Selecione o sexo:
 						<p:selectOneRadio id="sexo" value="#{graficosMB.sexo}" layout="grid" columns="7">

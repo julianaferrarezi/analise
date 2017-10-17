@@ -51,10 +51,10 @@ public class AcademicoService {
         return alunoVO;
     }
     
-    public List<AlunoGraduacaoVO> getAlunosPorUnidade(Long idUnidade){
+    public List<AlunoGraduacaoVO> getAlunosPorUnidade(Long idUnidade, int ano, int semestre){
     	List<AlunoGraduacaoVO> unidade = null;
     	try {
-    		unidade = unidadesUniversitariasClient.getCursandoDisciplinasPorUnidadeUniversitariaAnoSemestre(idUnidade, 2016, 2);
+    		unidade = unidadesUniversitariasClient.getCursandoDisciplinasPorUnidadeUniversitariaAnoSemestre(idUnidade, ano, semestre);
     		return unidade;
     	
     	} catch (Exception e) {

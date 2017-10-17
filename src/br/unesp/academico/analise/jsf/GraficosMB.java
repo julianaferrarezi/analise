@@ -247,8 +247,6 @@ public class GraficosMB {
 			barraAlunos.setMouseoverHighlight(false);
 			barraAlunos.setShowDatatip(false);
 			
-			System.out.println(tiposSelecionados.size());
-			
 			if(!tiposSelecionados.isEmpty()) {
 				Map<String, ChartSeries> selecionados = new HashMap<String, ChartSeries>();
 				
@@ -516,7 +514,7 @@ public class GraficosMB {
 	//************************************************************************************************************
 
 	public List<AlunoGraduacaoVO> getAlunosPorUnidade(Long idUnidade) { //Retorna lista de alunos de unidade
-		List<AlunoGraduacaoVO> unidadeAlunos = academicoService.getAlunosPorUnidade(idUnidade);
+		List<AlunoGraduacaoVO> unidadeAlunos = academicoService.getAlunosPorUnidade(idUnidade, 2016, 2);
 		return unidadeAlunos;
 	}
 	
