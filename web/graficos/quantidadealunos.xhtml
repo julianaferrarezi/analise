@@ -19,10 +19,17 @@
 		<h:form id="formAlunos">
 					<p:panelGrid columns="1" cellspacing="0" style="width:100%">
 							Selecione a unidade universitária:
-							<p:selectOneRadio id="unidade" value="#{graficosMB.unidadeUniversitaria}" layout="grid" columns="17">
+							<!-- <p:selectOneRadio id="unidade" value="#{graficosMB.unidadeUniversitaria}" layout="grid" columns="17">
 								<f:selectItems value="#{graficosMB.unidadesUniversitarias}" var="unidades" itemLabel="#{unidades}" itemValue="#{unidades}" />
 								<p:ajax update="cursos" />
-							</p:selectOneRadio>
+							</p:selectOneRadio>-->
+							
+							<p:selectOneMenu value="#{graficosMB.unidadeUniversitaria}">
+								<f:selectItem itemLabel="Selecione" itemValue="Selecione" />
+								<f:selectItems value="#{graficosMB.unidadesUniversitarias}" />
+								<p:ajax update="cursos" />
+							</p:selectOneMenu>
+							
 					</p:panelGrid>
 					<br></br>
 					<br></br>	
@@ -42,7 +49,7 @@
 						Selecione o(s) tipo(s) de ingresso:
 						<p:selectManyCheckbox id="tipoIngresso" value="#{graficosMB.tiposSelecionados}" layout="grid" columns="7">
 							<f:selectItems value="#{graficosMB.tiposIngresso}" var="tipos" itemLabel="#{tipos}" itemValue="#{tipos}" />
-							<p:ajax update="grafico" />
+							<!-- <p:ajax update="grafico" />-->
 						</p:selectManyCheckbox>
 					</p:panelGrid>
 					<br></br>
@@ -51,7 +58,7 @@
 						Selecione a situação:
 						<p:selectOneRadio id="situacao" value="#{graficosMB.situacao}" layout="grid" columns="7">
 							<f:selectItems value="#{graficosMB.situacoes}" var="sit" itemLabel="#{sit}" itemValue="#{sit}" />
-							<p:ajax update="grafico" />
+<!-- 							<p:ajax update="grafico" /> -->
 						</p:selectOneRadio>
 					</p:panelGrid>
 					<br></br>
@@ -62,10 +69,46 @@
 							<f:selectItem itemLabel="Todos" itemValue="Todos" />
 							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
-							<p:ajax update="grafico" />
+<!-- 							<p:ajax update="grafico" /> -->
 						</p:selectOneRadio>
 					</p:panelGrid>
-
+					<br></br>
+					<br></br>
+					<p:panelGrid columns="2" cellspacing="0" style="width:100%;">
+						<p:column>
+							<center>
+								<p:outputLabel for="checkEntrada" value="Ativar:" />
+								<p:selectBooleanCheckbox id="checkEntrada" value="#{graficosMB.ativarEntrada}">
+									<p:ajax update="entrada" />
+								</p:selectBooleanCheckbox>
+								<br></br>
+								<br></br>
+								A partir de:
+								<p:calendar id="entrada" pattern="dd/MM/yyyy" value="#{graficosMB.entrada}" disabled="#{!graficosMB.ativarEntrada}">
+									<p:ajax event="dateSelect" />
+								</p:calendar>
+							</center>	
+						</p:column>
+						<p:column>
+							<center>
+								Ativar:
+								<p:selectBooleanCheckbox value="#{graficosMB.ativarSaida}">
+									<p:ajax update="saida" />
+								</p:selectBooleanCheckbox>
+								<br></br>
+								<br></br>
+								Até:
+								<p:calendar id="saida" pattern="dd/MM/yyyy" value="#{graficosMB.saida}" disabled="#{!graficosMB.ativarSaida}">
+									<p:ajax event="dateSelect" />
+								</p:calendar>
+							</center>
+						</p:column> 
+					</p:panelGrid>
+					<p:panelGrid>
+						<p:commandButton value="Gerar gráfico" actionListener="#{graficosMB.novoBarraAlunos}" update="grafico" /> 
+					</p:panelGrid>
+					
+					
 					<br></br>
 					<center>
 						<p:chart type="bar" id="grafico" model="#{graficosMB.barraAlunos}" style="width:800px;height:500px;" />

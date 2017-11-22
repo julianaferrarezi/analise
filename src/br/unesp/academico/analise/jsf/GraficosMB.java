@@ -1,9 +1,10 @@
 package br.unesp.academico.analise.jsf;
 
+import java.text.SimpleDateFormat;
 //import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -11,10 +12,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
@@ -47,6 +51,10 @@ public class GraficosMB {
 	private String situacao = null;
 	private String sexo = "Todos";
 	private List<AlunoGraduacaoVO> alunos = null;
+	private Date entrada;
+	private Date saida;
+	private boolean ativarEntrada;
+	private boolean ativarSaida;
 	
 	private BarChartModel   barModel;
 	private LineChartModel  lineModelMatriculados;
@@ -64,6 +72,11 @@ public class GraficosMB {
 		tiposSelecionados = new ArrayList<String>();
 		situacoes = new ArrayList<String>();
 		alunos = new ArrayList<AlunoGraduacaoVO>();
+		
+		setAtivarEntrada(false);
+		setAtivarSaida(false);
+		
+		
 	}
 	
 	public List<String> getUnidadesUniversitarias() {
@@ -175,6 +188,47 @@ public class GraficosMB {
 		adicionaAlunos();
 	}
 	
+	public Date getEntrada() {
+		return entrada;
+	}
+	
+	public void setEntrada(Date entrada) {
+		this.entrada = entrada;
+		System.out.println(entrada);
+	}
+	
+	public Date getSaida() {
+		return saida;
+	}
+	
+	public void setSaida(Date saida) {
+		this.saida = saida;
+		System.out.println(saida);
+	}
+	
+	public boolean isAtivarEntrada() {
+		return ativarEntrada;
+	}
+	
+	public void setAtivarEntrada(boolean ativarEntrada) {
+		this.ativarEntrada = ativarEntrada;
+	}
+	
+	public boolean isAtivarSaida() {
+		return ativarSaida;
+	}
+	
+	public void setAtivarSaida(boolean ativarSaida) {
+		this.ativarSaida = ativarSaida;
+	}
+	
+	
+	/*public void formatarData() {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		format.format(entrada);
+	}*/
+	
+	
 	public BarChartModel getBarModel() { return barModel; }
 	
 	public LineChartModel getLineModelMatriculados() { return lineModelMatriculados; }
@@ -213,6 +267,22 @@ public class GraficosMB {
 						if(!a.getSexo().equals(sexo))
 							ok = 0;
 					}
+					
+					Date entradaCurso = a.getDataPrimeiraMatricula();
+					Date saidaCurso = a.getDataSaidaCurso();
+					
+					if(entrada != null && ativarEntrada == true) {
+						if(entradaCurso.before(entrada))
+							ok = 0;
+					}
+					
+					if(ok != 0) {
+						if(saidaCurso != null && ativarSaida == true) {
+							if(entradaCurso.after(saida))
+								ok = 0;
+						}
+					}
+					
 					if(ok == 1)
 						al.add(a);
 				}
@@ -232,6 +302,7 @@ public class GraficosMB {
 					(this.alunos).addAll(academicoService.getAlunosPorCurso(Long.parseLong(curso)));
 				}
 			}
+			
 			serieCursos.setLabel("Total de alunos");
 			barraAlunos.addSeries(serieCursos);
 			barraAlunos.setTitle("Quantidade de alunos");
@@ -262,6 +333,20 @@ public class GraficosMB {
 					if(!sexo.equals("Todos")) {
 						if(!sexo.equals(a.getSexo()))
 							ok = 0;
+					}
+					Date entradaCurso = a.getDataPrimeiraMatricula();
+					Date saidaCurso = a.getDataSaidaCurso();
+					
+					if(entrada != null && ativarEntrada == true) {
+						if(entradaCurso.before(entrada))
+							ok = 0;
+					}
+					
+					if(ok != 0) {
+						if(saidaCurso != null && ativarSaida == true) {
+							if(entradaCurso.after(saida))
+								ok = 0;
+						}
 					}
 					if(ok == 1) {
 						if(selecionados.containsKey(a.getTipoIngresso())) {
@@ -592,5 +677,4 @@ public class GraficosMB {
 	return alunoVO;
 }*/
 	
-
 }
