@@ -194,7 +194,6 @@ public class GraficosMB {
 	
 	public void setEntrada(Date entrada) {
 		this.entrada = entrada;
-		System.out.println(entrada);
 	}
 	
 	public Date getSaida() {
@@ -203,7 +202,6 @@ public class GraficosMB {
 	
 	public void setSaida(Date saida) {
 		this.saida = saida;
-		System.out.println(saida);
 	}
 	
 	public boolean isAtivarEntrada() {
@@ -211,6 +209,11 @@ public class GraficosMB {
 	}
 	
 	public void setAtivarEntrada(boolean ativarEntrada) {
+		if(ativarEntrada) {
+			Calendar hoje = Calendar.getInstance();
+			hoje.set(Calendar.HOUR_OF_DAY, 0);
+			entrada = hoje.getTime();
+		}
 		this.ativarEntrada = ativarEntrada;
 	}
 	
@@ -219,6 +222,11 @@ public class GraficosMB {
 	}
 	
 	public void setAtivarSaida(boolean ativarSaida) {
+		if(ativarSaida) {
+			Calendar hoje = Calendar.getInstance();
+			hoje.set(Calendar.HOUR_OF_DAY, 0);
+			saida = hoje.getTime();
+		}
 		this.ativarSaida = ativarSaida;
 	}
 	
