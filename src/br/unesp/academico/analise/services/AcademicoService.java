@@ -1,5 +1,6 @@
 package br.unesp.academico.analise.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.unesp.core.ConfigHelper;
@@ -71,6 +72,7 @@ public class AcademicoService {
     public List<CursoVO> getCursosPorUnidade(String sigla) {
     	Long idUnidade = getUnidade(sigla).getId();
     	List<CursoVO> cursos = unidadesUniversitariasClient.getCursos(idUnidade);
+    	
     	return cursos;
     }
     
@@ -81,6 +83,20 @@ public class AcademicoService {
     
     public List<AlunoGraduacaoVO> getAlunosPorCurso(Long idCurso) {
     	List<AlunoGraduacaoVO> alunos = cursosClient.getAlunosGraduacaoMatriculados(idCurso);
+    	return alunos;
+    }
+    
+    public String getNomeCurso(Long idCurso) {
+    	CursoVO curso = getCurso(idCurso);
+    	return curso.getNome();
+    }
+    
+    
+    
+    //AlunosGraduados
+    public List<AlunoGraduacaoVO> getAlunosGraduados(Long idCurso, Long ano) {
+    	List<AlunoGraduacaoVO> alunos = cursosClient.getAlunosGraduacaoFormados(idCurso, ano);
+    	
     	return alunos;
     }
      

@@ -1,6 +1,5 @@
 package br.unesp.academico.analise.jsf;
 
-import java.text.SimpleDateFormat;
 //import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,7 +17,6 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.primefaces.event.SelectEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
@@ -49,10 +47,16 @@ public class GraficosMB {
 	private List<String> tiposSelecionados;
 	private List<String> situacoes;
 	private String situacao = null;
-	private String sexo = "Todos";
+	//private String sexo = "Todos";
 	private List<AlunoGraduacaoVO> alunos = null;
 	private Date entrada;
 	private Date saida;
+	
+	
+	private Date dataEntrada; //usado em alunos graduados
+	private Long anoSaida; //usado em alunos graduados
+	private String sexo = "Ambos"; //usado em alunos graduados
+	
 	private boolean ativarEntrada;
 	private boolean ativarSaida;
 	
@@ -61,24 +65,61 @@ public class GraficosMB {
 	private DonutChartModel donutModelTipoIngresso;
 	private DonutChartModel donutModelSexosPorUnidade;
 	private DonutChartModel donutModelSexosPorCurso;
+	private BarChartModel barraAlunos;
 	
-	private BarChartModel   barraAlunos;
+	private BarChartModel   barraAlunosGraduados;
 
 	@PostConstruct
 	public void init(){
 		academicoService = AcademicoService.getInstance();
 		unidadeUniversitariaService = new UnidadeUniversitariaService();
 		cursosSelecionados = new ArrayList<String>();
+		tiposIngresso = new ArrayList<String>();
 		tiposSelecionados = new ArrayList<String>();
 		situacoes = new ArrayList<String>();
 		alunos = new ArrayList<AlunoGraduacaoVO>();
 		
 		setAtivarEntrada(false);
 		setAtivarSaida(false);
-		
-		
 	}
 	
+	//Validate
+	public boolean validarBotoes() {
+		if(unidadeUniversitaria == null || unidadeUniversitaria.isEmpty() || cursosSelecionados.isEmpty() || anoSaida == 0) {
+			FacesContext contexto = FacesContext.getCurrentInstance();
+			contexto.addMessage(null, new FacesMessage("Atenção", "Preencha os campos Unidade universitária, Cursos, Ano de saída"));
+			return false;
+		}
+		return true;
+	}
+	
+	// Search for graduated students
+	public void getAlunosGraduados() {
+		if(validarBotoes()) {
+			alunos = null;
+			alunos = new ArrayList<AlunoGraduacaoVO>();
+			for(String curso : cursosSelecionados) {
+				Long idCurso = Long.parseLong(curso);
+				System.out.println("Id:" + idCurso + " Ano: " + anoSaida);
+				alunos.addAll(academicoService.getAlunosGraduados(idCurso, anoSaida));
+			}
+			System.out.println("Quantidade: " + alunos.size());
+			org.primefaces.context.DefaultRequestContext.getCurrentInstance().update("formAlunosGraduados:tiposIngressoGraduados");
+		}
+	}
+	
+	// Returns the admission types of the students
+	public List<String> getTiposIngresso() {
+		tiposIngresso = new ArrayList<String>();
+		for(AlunoGraduacaoVO aluno : alunos) {
+			String tipo = aluno.getTipoIngresso();
+			if(!tiposIngresso.contains(tipo))
+				tiposIngresso.add(tipo);
+		}
+		return tiposIngresso;
+	}
+	
+	// Returns the list of university units
 	public List<String> getUnidadesUniversitarias() {
 		unidadesUniversitarias = new ArrayList<String>();
 		try {
@@ -89,26 +130,26 @@ public class GraficosMB {
 		} catch (ServiceValidationException e) {
 			e.printStackTrace();
 		}
+		
 		return (unidadesUniversitarias);
 	}
 	
+	// Get the selected university unit
 	public String getUnidadeUniversitaria() {
 		return unidadeUniversitaria;
 	}
 	
+	// Set the selected university unit
 	public void setUnidadeUniversitaria(String unidade) {
 		unidadeUniversitaria = unidade;
 	}
 	
+	// Returns the available courses
 	public List<CursoVO> getCursos() {
 		if(unidadeUniversitaria != null && !unidadeUniversitaria.isEmpty()) {
-			cursos = new ArrayList<CursoVO>();
-			CursoVO curso = new CursoVO();
-			curso.setId(0L);
-			curso.setNome("Todos");
-			cursos.add(curso);
-			cursos.addAll(academicoService.getCursosPorUnidade(unidadeUniversitaria));
+			cursos = academicoService.getCursosPorUnidade(unidadeUniversitaria);
 		}
+		
 		return (cursos);
 	}
 	
@@ -124,19 +165,16 @@ public class GraficosMB {
 		cursosSelecionados = cursosSelecionadosA;
 	}
 	
-	public List<String> getTiposIngresso() {
-		tiposIngresso = new ArrayList<String>();
-		if(alunos != null && !alunos.isEmpty()) {
-			for(AlunoGraduacaoVO a : alunos) {
-				if(!tiposIngresso.contains(a.getTipoIngresso())) {
-					tiposIngresso.add(a.getTipoIngresso());
-				}
-			}
-		}
-		return tiposIngresso;
-	}
-	
 	public List<String> getTiposSelecionados() {
+		List<AlunoGraduacaoVO> alunos = new ArrayList<AlunoGraduacaoVO>();
+		for(String idCurso : cursosSelecionados) {
+			Long idLong = Long.parseLong(idCurso);
+			alunos.addAll(academicoService.getAlunosGraduados(idLong, anoSaida));
+		}
+		for(AlunoGraduacaoVO aluno : alunos) {
+			String tipo = aluno.getTipoIngresso();
+			tiposIngresso.add(tipo);
+		}
 		return tiposSelecionados;
 	}
 	
@@ -231,10 +269,11 @@ public class GraficosMB {
 	}
 	
 	
-	/*public void formatarData() {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		format.format(entrada);
-	}*/
+	public Date getDataEntrada() { return dataEntrada; }
+	public void setDataEntrada(Date dataEntrada) { this.dataEntrada = dataEntrada; }
+	
+	public Long getAnoSaida() { return anoSaida; }
+	public void setAnoSaida(Long anoSaida) { this.anoSaida = anoSaida; }
 	
 	
 	public BarChartModel getBarModel() { return barModel; }
@@ -247,12 +286,120 @@ public class GraficosMB {
 	
 	public DonutChartModel getDonutModelSexosPorCurso() { return donutModelSexosPorCurso; }
 	
-	public BarChartModel getBarraAlunos() {
-		novoBarraAlunos();
-		return barraAlunos;
+	public BarChartModel getBarraAlunosGraduados() {
+		barraAlunosGraduados();
+		return barraAlunosGraduados;
 	}
 	
+	//Graduados - obg: unidade, curso, saída / opc: tipo de ingresso, primeira matrícula
+	
+	//Alunos graduados - obrigatórios: unidade universitária, curso, ano de saída - opcionais: tipos de ingresso, data de primeira matrícula
+	public void barraAlunosGraduados() {
+		barraAlunosGraduados = null;
+		ChartSeries serieCursos = new ChartSeries();
+		Map<String, ChartSeries> tipoSerie = new HashMap<String, ChartSeries>();
+		
+		if(!cursosSelecionados.isEmpty() && anoSaida != null && anoSaida != 0) {
+			
+			barraAlunosGraduados = new BarChartModel();
+			int maximo = 0;
+				
+			for(AlunoGraduacaoVO aluno : alunos) {
+				boolean contar = true;
+				boolean contarTipo = false;
+				String tipoIngresso = "";
+					
+				Long idCurso = aluno.getIdCurso();
+				String nomeCurso = academicoService.getNomeCurso(idCurso);
+					
+				if(!tiposSelecionados.isEmpty()) {
+					tipoIngresso = aluno.getTipoIngresso();
+					if(tiposSelecionados.contains(tipoIngresso))
+						contarTipo = true;
+				}
+				if(dataEntrada != null) {
+					Date primeiraMatricula = aluno.getDataPrimeiraMatricula();
+					if(primeiraMatricula.before(dataEntrada))
+						contar = false;
+				}
+				if(!sexo.equals("Ambos")) {
+					String sexoAluno = aluno.getSexo();
+					if(!sexoAluno.equals(sexo))
+						contar = false;
+				}
+					
+				if(contar) {
+						
+					Number somaC = 1;
+					if(serieCursos.getData().containsKey(nomeCurso)) {
+						somaC = serieCursos.getData().get(nomeCurso).intValue() + 1;
+					}
+					serieCursos.set(nomeCurso, somaC);
+						
+					if(contarTipo) {
+						ChartSeries serie;
+						if(tipoSerie.containsKey(tipoIngresso)) {
+							serie = tipoSerie.get(tipoIngresso);
+							Number soma = 1;
+							if(serie.getData().containsKey(nomeCurso)) {
+								soma = serie.getData().get(nomeCurso).intValue() + 1;
+							}
+							serie.set(nomeCurso, soma);
+						}
+						else {
+							serie = new ChartSeries();
+							serie.setLabel(tipoIngresso);
+							for(String curso : cursosSelecionados) {
+								String c = academicoService.getNomeCurso(Long.parseLong(curso));
+								serie.set(c, 0);
+							}
+							serie.set(nomeCurso, 1);
+						}
+						tipoSerie.put(tipoIngresso, serie);
+					}
+						
+					if(somaC.intValue() > maximo) {
+						maximo = somaC.intValue();
+					}	
+				}
+			}
+			
+			serieCursos.setLabel("Total de alunos");
+			barraAlunosGraduados.addSeries(serieCursos);
+			barraAlunosGraduados.setTitle("Quantidade de alunos graduados");
+			
+			if(!tipoSerie.isEmpty()) {
+				for(Map.Entry<String, ChartSeries> entrada : tipoSerie.entrySet()) {
+					barraAlunosGraduados.addSeries(entrada.getValue());
+				}
+			}
+			
+			Axis eixoX  = barraAlunosGraduados.getAxis(AxisType.X);
+			eixoX.setTickAngle(30);
+			eixoX.setLabel("Cursos");
+			
+			Axis eixoY = barraAlunosGraduados.getAxis(AxisType.Y);
+			eixoY.setTickFormat("%d");
+			eixoY.setMax(maximo + 26);
+			eixoY.setMin(0);
+			
+			barraAlunosGraduados.setLegendPosition("ne");
+			barraAlunosGraduados.setShowPointLabels(true);
+			barraAlunosGraduados.setMouseoverHighlight(false);
+			barraAlunosGraduados.setShowDatatip(false);
+		}
+		else {
+			barraAlunosGraduados = new BarChartModel();
+			ChartSeries serie = new ChartSeries();
+			serie.set("-", 0);
+			barraAlunosGraduados.addSeries(serie);
+		}
+	}	
+	
+	
+	
 	public void novoBarraAlunos() {
+		System.out.println("Chamou");
 		barraAlunos = null;
 		ChartSeries serieCursos = new ChartSeries();
 		
@@ -637,6 +784,10 @@ public class GraficosMB {
 	
 	public String quantidadeAlunos() {
 		return "quantidadealunos.xhtml";
+	}
+	
+	public String alunosGraduados() {
+		return "alunosgraduados.xhtml";
 	}
 	
 	/*public AlunoGraduacaoVO getAlunoVO() {
