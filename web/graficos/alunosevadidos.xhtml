@@ -9,34 +9,34 @@
     xmlns:pe="http://primefaces.org/ui/extensions" 
     >
      
-	<ui:define name="title">Alunos graduados</ui:define>
+	<ui:define name="title">Alunos evadidos</ui:define>
 	
 	<ui:define name="header">
-		<meta name="header" content="Gráfico de alunos graduados" />
+		<meta name="header" content="Gráfico de alunos evadidos" />
 	</ui:define>
   
     <ui:define name="content">
-		<h:form id="formAlunosGraduados">
+		<h:form id="formAlunosEvadidos">
 			
 			<h:panelGrid columns="2" cellpadding="10" cellspacing="0" style="width:100%;">
 				<h:outputText colspan="" for="unidadeUniversitaria" value="Selecione uma unidade universitária: *" />
-				<p:selectOneMenu value="#{graduados.unidadeSelecionada}" filter="true" style="width:200px;">
+				<p:selectOneMenu value="#{graficosMB.unidadeUniversitaria}" filter="true" style="width:200px;">
 					<f:selectItem itemLabel="Selecione" itemValue="Selecione" />
-					<f:selectItems value="#{graduados.unidadesUniversitarias}" />
+					<f:selectItems value="#{graficosMB.unidadesUniversitarias}" />
 					<p:ajax update="cursos" />
 				</p:selectOneMenu>
 				
 				<h:outputText for="cursos" value="Selecione o(s) curso(s): *" />
-				<p:selectCheckboxMenu id="cursos" value="#{graduados.cursosSelecionados}" label="Cursos" filter="true" style="width:200px;">
-					<f:selectItems value="#{graduados.cursos}" var="cursos" itemLabel="#{cursos.nome}" itemValue="#{cursos.id}" />
+				<p:selectCheckboxMenu id="cursos" value="#{graficosMB.cursosSelecionados}" label="Cursos" filter="true" style="width:200px;">
+					<f:selectItems value="#{graficosMB.cursos}" var="cursos" itemLabel="#{cursos.nome}" itemValue="#{cursos.id}" />
 				</p:selectCheckboxMenu>
 				
 				<h:outputText for="dataSaida" value="Selecione o ano de graduação: *" />
-				<p:inputText id="dataSaida" value="#{graduados.anoSaida}"></p:inputText> 
+				<p:inputText id="dataSaida" value="#{graficosMB.anoSaida}"></p:inputText> 
 			
 			</h:panelGrid>	
 			
-			<p:commandButton id="buscarAlunos" value="Buscar alunos" actionListener="#{graduados.getAlunos}" update="mensagemBuscarAlunos"></p:commandButton>
+			<p:commandButton id="buscarAlunos" value="Buscar alunos" actionListener="#{graficosMB.getAlunosEvadidos}" update="mensagemBuscarAlunos"></p:commandButton>
 			
 			<p:ajaxStatus onstart="PF('carregando').show()" onsuccess="PF('carregando').hide()" />
 			
@@ -47,16 +47,16 @@
 			<p:growl id="mensagemBuscarAlunos" showDetail="true" sticky="true" />
 			
 			<h:panelGrid columns="2" cellpadding="10" cellspacing="0" style="width:100%; margin-top: 10px;">
-				<h:outputText for="tiposIngresso" value="Selecione o(s) tipo(s) de ingresso:" />
-				<p:selectCheckboxMenu id="tiposIngresso" value="#{graduados.tiposSelecionados}" label="Tipos de ingresso" filter="true" style="width:200px;">
-					<f:selectItems value="#{graduados.tiposIngresso}" />
+				<h:outputText for="tiposIngressoEvadidos" value="Selecione o(s) tipo(s) de ingresso:" />
+				<p:selectCheckboxMenu id="tiposIngressoEvadidos" value="#{graficosMB.tiposSelecionados}" label="Tipos de ingresso" filter="true" style="width:200px;">
+					<f:selectItems value="#{graficosMB.tiposIngresso}" />
 				</p:selectCheckboxMenu>
 				
 				<h:outputText for="dataEntrada" value="Selecione a data de primeira matrícula: " />
-				<p:calendar id="dataEntrada" value="#{graduados.dataEntrada}" pattern="dd/MM/yyyy" mask="true" /> 
+				<p:calendar id="dataEntrada" value="#{graficosMB.dataEntrada}" pattern="dd/MM/yyyy" mask="true" /> 
 				
 				<h:outputText for="sexos" value="Selecione o sexo dos aluno(s): *" />
-				<p:selectOneRadio id="sexos" value="#{graduados.sexo}" style="border: 0px;">
+				<p:selectOneRadio id="sexos" value="#{graficosMB.sexo}" style="border: 0px;">
 					<f:selectItem itemLabel="Ambos" itemValue="Ambos" />
 					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
@@ -68,8 +68,9 @@
 			</div>
 			
 			<div class="ui-g-12 ui-md-6 ui-lg-4">
-				<p:chart type="bar" id="grafico" model="#{graduados.grafico}" style="width:100%; height:600px;" widgetVar="grafico"/>
+				<p:chart type="bar" id="grafico" model="#{graficosMB.barraAlunosGraduados}" style="width:100%; height:400px;" />
 			</div>
+			
 		</h:form>
 	</ui:define>	
 	
