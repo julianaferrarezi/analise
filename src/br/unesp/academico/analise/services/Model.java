@@ -34,25 +34,25 @@ public class Model {
     	UnidadeUniversitariaService unidadeUniversitariaService = new UnidadeUniversitariaService();
     	List<String> unidadesUniversitarias = new ArrayList<String>();
     	
-		try {
+		/*try {
 			listaUnidade = unidadeUniversitariaService.listarUnidades();
 			for (br.unesp.academico.analise.vo.UnidadeUniversitariaVO unidadeUniversitariaVO : listaUnidade) {
 				unidadesUniversitarias.add(unidadeUniversitariaVO.getNomeAbreviado());
 			}
 		} catch (ServiceValidationException e) {
 			e.printStackTrace();
-		}
+		}*/
     	
-    	//unidadesUniversitarias.add("FC");
+    	unidadesUniversitarias.add("FC");
 		
 		return unidadesUniversitarias;
     }
     
     public List<CursoVO> getCursos(String siglaUnidade) {
-    	Long idUnidade = getUnidade(siglaUnidade).getId();
-    	return unidadesUniversitariasClient.getCursos(idUnidade);
+    	/*Long idUnidade = getUnidade(siglaUnidade).getId();
+    	return unidadesUniversitariasClient.getCursos(idUnidade);*/
     	
-    	/*List<CursoVO> cursos = new ArrayList<CursoVO>();
+    	List<CursoVO> cursos = new ArrayList<CursoVO>();
     	CursoVO curso1 = new CursoVO();
     	curso1.setId(1L);
     	curso1.setNome("Sistemas de informação");
@@ -61,7 +61,7 @@ public class Model {
     	curso2.setNome("Ciências da computação");
     	cursos.add(curso1);
     	cursos.add(curso2);
-    	return cursos;*/
+    	return cursos;
     }
 
     private UnidadeUniversitariaVO getUnidade(String siglaUnidade) {
@@ -69,22 +69,22 @@ public class Model {
     }
     
     public CursoVO getCurso(Long idCurso) {
-    	return cursosClient.get(idCurso);
+    	//return cursosClient.get(idCurso);
     	
-    	/*CursoVO curso1 = new CursoVO();
+    	CursoVO curso1 = new CursoVO();
     	curso1.setId(1L);
     	curso1.setNome("Sistemas de informação");
     	CursoVO curso2 = new CursoVO();
     	curso2.setId(2L);
     	curso2.setNome("Ciências da computação");
     	if (idCurso == 1L) return curso1;
-    	else return curso2;*/
+    	else return curso2;
     }
     
     public List<AlunoGraduacaoVO> getAlunosGraduados(Long idCurso, Long ano) {
-    	return cursosClient.getAlunosGraduacaoFormados(idCurso, ano);
+    	//return cursosClient.getAlunosGraduacaoFormados(idCurso, ano);
     	
-    	/*AlunoGraduacaoVO aluno1 = new AlunoGraduacaoVO();
+    	AlunoGraduacaoVO aluno1 = new AlunoGraduacaoVO();
     	aluno1.setIdCurso(1L);
     	aluno1.setSexo("Masculino");
     	aluno1.setTipoIngresso("Concurso Vestibular");
@@ -95,11 +95,24 @@ public class Model {
     	List<AlunoGraduacaoVO> alunos = new ArrayList<AlunoGraduacaoVO>();
     	alunos.add(aluno1);
     	alunos.add(aluno2);
-    	return alunos;*/
+    	return alunos;
     }
     
     public List<AlunoGraduacaoVO> getAlunosMatriculados(Long idCurso) {
-    	return cursosClient.getAlunosGraduacaoMatriculados(idCurso);
+    	//return cursosClient.getAlunosGraduacaoMatriculados(idCurso);
+    	
+    	AlunoGraduacaoVO aluno1 = new AlunoGraduacaoVO();
+    	aluno1.setIdCurso(1L);
+    	aluno1.setSexo("Masculino");
+    	aluno1.setTipoIngresso("Concurso Vestibular");
+    	AlunoGraduacaoVO aluno2 = new AlunoGraduacaoVO();
+    	aluno2.setIdCurso(2L);
+    	aluno2.setNome("Feminino");
+    	aluno2.setTipoIngresso("Transferência interna");
+    	List<AlunoGraduacaoVO> alunos = new ArrayList<AlunoGraduacaoVO>();
+    	alunos.add(aluno1);
+    	alunos.add(aluno2);
+    	return alunos;
     }
     
     public List<String> getTiposIngresso(List<AlunoGraduacaoVO> listaAlunos) {
@@ -112,5 +125,17 @@ public class Model {
     		}
     	}
     	return tiposIngresso;
+    }
+    
+    public List<String> getSituacoes(List<AlunoGraduacaoVO> listaAlunos) {
+    	List<String> situacoes = new ArrayList<String>();
+    	
+    	for (AlunoGraduacaoVO aluno : listaAlunos) {
+    		String situacao = aluno.getSituacaoAtual();
+    		if (! situacoes.contains(situacao)) {
+    			situacoes.add(situacao);
+    		}
+    	}
+    	return situacoes;
     }
 }

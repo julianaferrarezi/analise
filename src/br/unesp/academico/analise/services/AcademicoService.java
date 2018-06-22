@@ -73,6 +73,13 @@ public class AcademicoService {
     	Long idUnidade = getUnidade(sigla).getId();
     	List<CursoVO> cursos = unidadesUniversitariasClient.getCursos(idUnidade);
     	
+    	//REMOVER
+    	/*List<CursoVO> cursos = new ArrayList<CursoVO>();
+    	CursoVO c1 = new CursoVO();
+    	c1.setId(16L);
+    	c1.setNome("Sistemas de Informação");
+    	cursos.add(c1);*/
+    	
     	return cursos;
     }
     
@@ -89,6 +96,9 @@ public class AcademicoService {
     public String getNomeCurso(Long idCurso) {
     	CursoVO curso = getCurso(idCurso);
     	return curso.getNome();
+    	
+    	//REMOVER
+    	//return "Sistemas de Informação";
     }
     
     
@@ -97,6 +107,29 @@ public class AcademicoService {
     public List<AlunoGraduacaoVO> getAlunosGraduados(Long idCurso, Long ano) {
     	List<AlunoGraduacaoVO> alunos = cursosClient.getAlunosGraduacaoFormados(idCurso, ano);
     	
+    	//REMOVER
+    	/*List<AlunoGraduacaoVO> alunos = new ArrayList<AlunoGraduacaoVO>();
+    	AlunoGraduacaoVO a1 = new AlunoGraduacaoVO();
+    	a1.setIdCurso(16L);
+    	a1.setTipoIngresso("Concurso Vestibular");
+    	AlunoGraduacaoVO a2 = new AlunoGraduacaoVO();
+    	a2.setIdCurso(16L);
+    	a2.setTipoIngresso("Concurso Vestibular");
+    	alunos.add(a1);
+    	alunos.add(a2);*/
+    	
+    	return alunos;
+    }
+    
+    //AlunosEvadidos
+    public List<AlunoGraduacaoVO> getAlunosEvadidos(Long idCurso) {
+    	List<AlunoGraduacaoVO> alunos = cursosClient.getAlunosGraduacaoMatriculados(idCurso);
+    	return alunos;
+    }
+    
+    //AlunosMatriculados
+    public List<AlunoGraduacaoVO> getAlunosMatriculados(Long idCurso) {
+    	List<AlunoGraduacaoVO> alunos = cursosClient.getAlunosGraduacaoMatriculados(idCurso);
     	return alunos;
     }
      
